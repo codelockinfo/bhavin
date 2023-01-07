@@ -1,0 +1,214 @@
+<div class="main-video-with-text" id="{{ section.id }}">
+  <div class="video-with-text mulvideo">
+    <div class="slider-block-vider multiple-items">
+      {% for block in section.blocks %}
+      <div class="flex-video-text">
+        <div class="text-section vide-text-section">
+          <h2 class="heading">{{ block.settings.heading }}</h2>
+          <p class="text">{{ block.settings.text }}</p>
+          <div class="button-cls cls-hover-cls">
+            <a href="{{ block.settings.btn-link }}">{{ block.settings.btn-text }}</a>
+          </div>
+        </div>
+        <div class="video-section vide-text-section">
+          <iframe src="https://www.youtube.com/embed/{{block.settings.video |  split: "=" | last }}"  frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+        </div>
+      </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Video with text",
+    "settings": [
+    {
+        "id" : "image",
+        "type" : "image_picker",
+        "label" : "Background Desktop Image"
+      },
+      {
+        "id" : "mobileimage",
+        "type" : "image_picker",
+        "label" : "Background Mobile Image"
+      },
+       {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#E1B6E7"
+      }
+    ],
+    "blocks" : [
+      {
+        "name" : "block",
+        "type" : "block",
+        "settings" : [
+          {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Heading"
+      },
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+          {
+        "id" : "video",
+        "type": "video_url",
+        "accept": ["youtube", "vimeo"],
+        "label" : "Video"
+      },
+          {
+        "id" : "btn-text",
+        "type" : "text",
+        "label" : "Button"
+      },
+      {
+        "id" : "btn-link",
+        "type" : "url",
+        "label" : "Button Link"
+      }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Video with text"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+  .main-video-with-text{
+     {% if section.settings.image != blank %}
+            background-image: url({{section.settings.image | img_url: 'master'}});
+          {% else %}
+            background:{{section.settings.bg-color}};
+         {% endif %}
+      background-size: cover;
+    background-repeat: no-repeat;
+  }
+      .video-with-text {
+    padding: 2%;
+}
+  .slider-block-vider .flex-video-text{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+      justify-content: space-between;
+    align-items: center;
+      max-width: 1900px;
+      margin: auto;
+  }
+      .text-section {
+    max-width: 400px;
+    margin: auto;
+}
+  .vide-text-section{
+    width: 48%;
+  }
+      .text-section h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 42px;
+    color: #FFFFFF;
+}
+      .text-section p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 450;
+    font-size: 18px;
+    line-height: 25px;
+    letter-spacing: -0.03em;
+    color: #FFFFFF;
+}
+      .button-cls {
+    background: #fff;
+    width: fit-content;
+        padding: 10px 80px;
+
+    border-radius: 66px;
+}
+      .button-cls a {
+       font-family: 'TTNormsProbold';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 27px;
+    text-align: center;
+    color: #C685FF;
+}
+      .video-section iframe {
+    width: 100%;
+    height: 480px;
+    border-radius: 15px;
+}
+              .mulvideo .slick-dots li button:before, .slick-dots li a:before{
+                  color: #fff;
+              }
+              .mulvideo .slick-dots li{
+                  margin: 0 0px;
+              }
+              .mulvideo .slick-dots li button:before{
+                  font-size: 40px;
+              }
+      @media(max-width:1500px){
+    .video-section iframe {
+    height: 350px;
+}
+  }
+   @media(max-width:1200px){
+    .video-section iframe {
+    height: 280px;
+}
+   }
+      
+      @media(max-width: 768px){
+        .main-video-with-text{
+          {% if section.settings.mobileimage != blank %}
+            background-image: url({{section.settings.mobileimage | img_url: 'master'}});
+          {% else %}
+            background:{{section.settings.bg-color}};
+         {% endif %}
+  }
+        .flex-video-text {
+    flex-direction: column-reverse;
+}
+      .video-with-text {
+    padding: 5%;
+}
+      .vide-text-section{
+    width: 100%;
+    margin: 5% 0 0;
+  }
+  .text-section {
+    max-width: 100%;
+}
+  .video-section {
+    margin-bottom: 5%;
+}
+        .video-section iframe {
+    height: 350px;
+}
+        .text-section h2.heading {
+    font-size: 25px;
+    line-height: 32px;
+}
+      .text-section p.text {
+    font-size: 15px;
+    line-height: 21px;
+}
+      }
+  @media(max-width:500px){
+    .video-section iframe {
+    height: 250px;
+}
+  }
+</style>

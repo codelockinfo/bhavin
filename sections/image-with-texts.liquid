@@ -1,0 +1,110 @@
+<div class="Main-Image-With-Text" id="{{ section.id }}">
+  <div class="Min-image-head">
+    <div class="flex-images">
+      <div class="contant-writer width-im-cnt">
+        <h2 class="heading">{{ section.settings.heading }}</h2>
+        <p class="text" >{{ section.settings.text }}</p>
+      </div>
+      {% if section.settings.image != blank %}
+      <div class="main-image-sec width-im-cnt">
+        <img src="{{ section.settings.image | img_url: 'master' }}">
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Image with texts",
+    "settings": [
+      {
+        "id" : "image",
+        "type" : "image_picker",
+        "label" : "Image"
+      },
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Heading"
+      },
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#DBB3F9"
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Image with texts"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+  .Min-image-head{
+    padding: 5rem 3rem;
+    background: {{section.settings.bg-color}};
+  }
+  .flex-images{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .width-im-cnt{
+    width: 48%;
+  }
+  .main-image-sec img{
+    width: 100%;
+  }
+  .contant-writer {
+    padding: 0 5%;
+}
+  .contant-writer h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 50px;
+    line-height: 55px;
+    letter-spacing: -0.03em;
+    color: #FFFFFF;
+}
+  .contant-writer p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 27px;
+    color: #FFFFFF;
+}
+  @media(max-width:768px){
+    .width-im-cnt{
+    width: 100%;
+  }
+    .main-image-sec{
+      margin-top: 3rem;
+    }
+   .contant-writer {
+    padding: 0;
+} 
+    .contant-writer h2.heading {
+    font-size: 30px;
+    line-height: 35px;
+}
+  .contant-writer p.text {
+    font-size: 20px;
+    line-height: 23px;
+}
+  }
+</style>

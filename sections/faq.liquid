@@ -1,0 +1,214 @@
+<div class="Main-faq-section" id="{{ section.id }}" >
+  <div class="Faqs-section">
+    <header class="main-heading">
+      <h2 class="heading">{{ section.settings.heading }}</h2>
+    </header>
+    <div class="main-block-faq">
+      {% for block in section.blocks %}
+        <div class="main-faq">
+          <div class="title-faq">
+            <div class="heading-cls">
+            <h2 class="title">{{ block.settings.title }}</h2>
+            </div>
+            <div class="image-faq-cls">
+              <img class="down-arrow" src="https://cdn.shopify.com/s/files/1/0613/4628/3679/files/Vector_10.png?v=1661151648">
+               <img class="top-arrow" src="https://cdn.shopify.com/s/files/1/0613/4628/3679/files/Vector_3.png?v=1661151648">
+            </div>
+            
+          </div>
+        <div class="description">
+          <p class="text"> {{ block.settings.text }} </p>
+          {% if block.settings.image != blank %}
+            <div class="faq-img-block">
+              <img src="{{ block.settings.image | img_url:'master' }}">
+            </div>
+          {% endif %}
+        </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "FAQ Section",
+    "settings": [
+      {
+        "id" : "image",
+        "type" : "image_picker",
+        "label" : "Image"
+      },
+      {
+        "id" : "mobile-image",
+        "type" : "image_picker",
+        "label" : "Mobile Image"
+      },
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Heading"
+      },
+      {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#eae1f1"
+      }
+    ],
+    "blocks" : [
+      {
+        "name" : "block",
+        "type" : "block",
+        "settings" : [
+          {
+            "id" : "title",
+            "type" : "text",
+            "label" : "Heading"
+          },
+          {
+            "id" : "text",
+            "type" : "textarea",
+            "label" : "Text"
+          },
+          {
+            "id" : "image",
+            "type" : "image_picker",
+            "label" : "Image"
+          }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "FAQ Section"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+  header.main-heading{
+    background-image : url({{section.settings.image | img_url: 'master'}});
+       height: 60vh;
+    background-position: center;
+    background-size: cover;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+  }
+  .main-block-faq {
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
+    padding: 5% 1%;
+}
+  .Faqs-section {
+    background: {{ section.settings.bg-color }};
+}
+  .title-faq {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+}
+  .image-faq-cls img {
+    width: 100%;
+    max-width: 24px;
+    cursor: pointer;
+    display: flex;
+}
+  .main-faq {
+    border-bottom: 2px solid #C685FF;
+    padding: 15px 0 13px;
+}
+  .main-faq:first-child {
+   border-top: 2px solid #C685FF;
+}
+  .description p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #42494E;
+    margin-top: 2%;
+}
+  .main-heading h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 45px;
+    line-height: 50px;
+    letter-spacing: -0.03em;
+    color: #FFFFFF;
+}
+  .heading-cls h2.title {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    color: #42494E;
+}
+  .image-faq-cls img.top-arrow{
+    display: none;
+  }
+  .image-faq-cls.Active img.top-arrow{
+    display: block;
+  }
+  .image-faq-cls.Active img.down-arrow{
+    display: none;
+  }
+  .description{
+    display: none;
+  }
+  .description.Active{
+    display: block;
+  }
+  .faq-img-block {
+    text-align: center;
+}
+ @media(max-width:1220px){
+   .main-block-faq{
+    padding: 5% 5%; 
+   }
+
+ }
+  @media(max-width:768px){
+    header.main-heading{
+      {% if section.settings.mobile-image != blank %}
+    background-image : url({{section.settings.mobile-image | img_url: 'master'}});
+        {% else %}
+        background-image : url({{section.settings.image | img_url: 'master'}});
+      {% endif %}
+  }
+    .image-faq-cls img {
+    max-width: 20px;
+}
+    .description p.text {
+    font-size: 15px;
+    line-height: 22px;
+}
+  .heading-cls h2.title {
+    font-size: 15px;
+    line-height: 22px;
+}
+    .main-heading h2.heading {
+    font-size: 38px;
+    line-height: 43px;
+}
+  }
+</style>
+
+<script src="https://code.jquery.com/jquery-3.6.0.min.js" integrity="sha256-/xUj+3OJU5yExlq6GSYGSHk7tPXikynS7ogEvDej/m4=" crossorigin="anonymous"></script>
+<!--  <link rel="canonical" href="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.5.9/slick.min.css">
+  <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/slick-carousel/1.6.0/slick.js"></script>  -->
+<script>
+  $(".image-faq-cls img").click(function(){
+    console.log("hello");
+    $(this).closest(".image-faq-cls").toggleClass("Active");
+    $(this).closest(".main-faq").find(".description").toggleClass("Active");
+  });
+</script>

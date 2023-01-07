@@ -1,0 +1,124 @@
+<div class="contacproduct">
+  <div class="producttile">
+    <h2 class="contacprdtitle">{{ section.settings.prdtitle }}</h2>
+  </div>
+  <div class="shopflexcontact">
+      {% for block in section.blocks %}
+      <div class="shopflexcontact1">
+        <div class="shopcontain">
+          <a href="{{ block.settings.komurl}}"><p class="stocktitle"><span>{{ block.settings.kome }}</span></p></a>
+        </div>
+      </div>
+    {% endfor %}
+    
+  </div>
+</div>
+
+<style>
+  .contacproduct {
+    background: #C685FF;
+    color: #fff;
+    text-align: center;
+    padding: 5% 0px;
+}
+  .contacprdtitle {
+    font-size: 35px;
+    line-height: 46px;
+    font-weight: 900;
+    font-family: 'Gazpacho';
+}
+  .stocktitle {
+    font-family: 'TT Norms Pro';
+    font-size: 15px;
+    line-height: 20px;
+    font-weight: bold;
+        padding: 12px 11px;
+    color: #C685FF;
+}
+  .shopflexcontact {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: center;
+        padding: 3% 0px;
+}
+  .shopflexcontact1 {
+    margin-right: 1%;
+    margin-left: 1%;
+        width: 15%;
+    background-color: #fff;    
+    border-radius: 50px;
+}
+  .stocktitle span{
+     color: #C685FF;
+  }
+
+      @media only screen and (max-width: 1480px) {
+.shopflexcontact1{
+      width: 22%;
+}
+    }
+      @media only screen and (max-width: 1020px) {
+.shopflexcontact1 {
+    width: 28%;
+}
+      }
+
+        @media only screen and (max-width: 851px) {
+.shopflexcontact1 {
+    width: 40%;
+}
+    }
+   @media only screen and (max-width: 768px) {
+         .contacprdtitle {
+    font-size: 25px;
+         line-height: 35px;}
+       
+   }
+       @media only screen and (max-width: 500px) {
+      .shopflexcontact1 {
+    width: 100%;
+    margin: 3% 5%;
+}
+       }
+
+</style>
+  
+{% schema %}
+  {
+  "name": "ProductContact",
+
+  "settings": [
+  {
+    "id" : "prdtitle",
+    "type" : "text",
+    "label" : "Heading"
+  }
+  ],
+  "blocks":[
+  {
+  "type" : "block",
+  "name" : "block",
+  "settings" : [
+         {
+    "id" : "kome",
+    "type" : "text",
+    "label" : "button"
+  },
+              {
+    "id" : "komurl",
+    "type" : "url",
+    "label" : "button url"
+  }
+  ]
+  }
+
+  ],
+  "presets" : [
+  {
+    "name" : "ProductContact",
+    "category" : "ProductContact"
+
+    }
+  ]
+  }
+  {% endschema %}

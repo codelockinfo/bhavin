@@ -1,0 +1,172 @@
+
+
+<div class="prdcontain">
+  <div class="widths-prd-cont">
+    <div class="prd_flex">
+        <div class="prd_flex1">
+            <div class="komcontain">
+                <h2 class="biotitle">{{section.settings.komtitle}}</h2>
+                <p class="biopar">{{section.settings.kompar}}</p>
+                <p class="subtn cls-hover-cls"><a href="{{section.settings.komurl}}">{{section.settings.kombtn}}</a></p>
+            </div>
+        </div>
+        <div class="prd_flex2">
+            <div class="komcontain2">
+<!--                 <img class="descktopcls" src="{{section.settings.bioimg | img_url:'master'}}" class="komimage"> -->
+               {% if section.settings.bioimgmobile != blank %}
+              <img class="mobilecls" src="{{section.settings.bioimgmobile | img_url:'master'}}" class="komimage">
+              {% else %}
+                 <img class="mobilecls" src="{{section.settings.bioimg | img_url:'master'}}" class="komimage">
+              {% endif %}
+            </div>
+            <div class="shopround" >
+              <a href="{{ section.settings.img-link }}">
+                <img src="{{section.settings.shop | img_url:'master'}}" class="shopimg rotate" id="js-logo">
+              </a>
+            </div>
+        </div>
+    </div>
+  </div>
+</div>
+{% schema %}
+{
+"name": "ShopProduct",
+
+"settings": [
+{
+  "id" : "komtitle",
+  "type" : "text",
+  "label" : "Heading"
+},
+{
+    "id" : "kompar",
+    "type" : "textarea",
+    "label" : "Discription"
+  },
+  {
+    "id" : "kombtn",
+    "type" : "text",
+    "label" : "btn title"
+  },
+  {
+    "id" : "komurl",
+    "type" : "url",
+    "label" : "btn url"
+  },
+{
+    "id": "bioimg",
+    "type": "image_picker",
+     "label": "Desktop Image"
+    },
+  {
+    "id": "bioimgmobile",
+    "type": "image_picker",
+     "label": "Mobile Image"
+    },
+    {
+        "id": "shop",
+        "type": "image_picker",
+         "label": "shop Image"
+        },
+  {
+    "id" : "img-link",
+    "type" : "url",
+    "label" : "Image Link"
+  },
+  {
+    "id" : "bg-color",
+    "type" : "color",
+    "label" : "Background Color",
+    "default" : "#dedede"
+  }
+],
+
+"presets" : [
+{
+  "name" : "ShopProduct",
+  "category" : "ShopProduct"
+
+  }
+]
+}
+{% endschema %}
+
+<style>
+
+  .widths-prd-cont{
+    max-width: 1900px;
+    width: 100%;
+    margin: auto;
+  }
+    .shopround.Active{
+    top: unset;
+    display: block;
+    position: fixed;
+    bottom: 95px;
+    right: 3%;
+    text-align: end;
+    opacity: 1;
+    z-index: 999;
+  }
+   .descktopcls{
+     display:block;
+   }
+    .mobilecls{
+      display:none;
+    }
+  .prdcontain {
+    background: {{section.settings.bg-color}};
+    background-image: url(https://cdn.shopify.com/s/files/1/0613/4628/3679/files/image_42_816b4417-86f7-4c2e-bbc8-3d90dfe15e6a.png?v=1661507959);
+    background-size: cover;
+    background-position: left;
+}
+.prd_flex1{
+      padding: 18% 5%;
+}
+.biopar span {
+    display: block;
+}
+  @media(max-width:768px){
+    .prd_flex1 {
+        padding:unset;
+        padding-top: 3%;
+        padding-left: 5%;
+    }
+    .prdcontain{
+    background-image: unset;
+  }
+   .descktopcls{
+     display:none;
+   }
+    .mobilecls{
+      width: 100%;
+      display:block;
+    }
+    .biopar span {
+    display: inline;
+}
+  }
+</style>
+
+        <link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.css">
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script>
+  $(window).scroll(function(){
+  
+    if ($(this).scrollTop() > 1000) {
+       $('.shopround').addClass('Active');
+      $('.shopround').attr('data-aos','fade-up');
+         console.log('ifshop');
+    } else {
+       $('.shopround').removeClass('Active');
+      $('.shopround').attr('data-aos','');
+      $('.shopround').removeClass('aos-init');
+      $('.shopround').removeClass('aos-animate');
+         console.log('else');
+    }
+});
+  AOS.init({
+  duration: 1000
+});
+</script>

@@ -1,0 +1,120 @@
+<div class="Suppoted-section-main" id="{{ section.id }}">
+  <div class="Suppot-section">
+    <header class="suppot-head">
+      <h2 class="heading">{{ section.settings.heading }}</h2>
+      <p class="text">{{ section.settings.text }}</p>
+    </header>
+    <div class="flex-suppot">
+      {%  for block in section.blocks %}
+        {% if block.settings.image != blank %}
+        <div class="image-suppoted">
+          <img src="{{ block.settings.image | img_url: 'master' }}">
+        </div>
+      {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Suppoted Section",
+    "settings": [
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Heading"
+      },
+      {
+        "id" : "tex",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#fff"
+      }
+    ],
+    "blocks" : [
+      {
+        "name" : "block",
+        "type" : "block",
+        "settings" : [
+        {
+          "id" : "image",
+          "type" : "image_picker",
+          "label" : "Image"
+        }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Suppoted Section"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+  #{{ section.id }}{
+    background: {{section.settings.bg-color}};
+  }
+  .Suppot-section {
+       padding: 3% 5%;
+    max-width: 1900px;
+    width: 100%;
+    margin: auto;
+}
+  .flex-suppot{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .image-suppoted {
+    width: 16%;
+    display: flex;
+    align-items: center;
+    padding: 2%;
+}
+  .image-suppoted img{
+    width: 100%;
+  }
+   .suppot-head h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 42px;
+    text-align: center;
+    color: #000000;
+    margin: 0;
+}
+  .suppot-head p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    letter-spacing: -0.03em;
+    color: #000000;
+}
+  @media(max-width:768px){
+    .image-suppoted {
+    width: 33.33%;
+}
+    .suppot-head h2.heading {
+    font-size: 25px;
+    line-height: 32px;
+}
+  .suppot-head p.text {
+    font-size: 18px;
+    line-height: 24px;
+}
+  }
+</style>

@@ -1,0 +1,253 @@
+<div class="Multiple-Restore" id="{{ section.id }}">
+  <div class="Restore-Main">
+    <header class="Multiple-Rest">
+      <h2 class="heading">{{ section.settings.heading }}</h2>
+      <p class="text">{{ section.settings.text1 }}</p>
+    </header>
+    <div class="main-block-multiple">
+      {% for block in section.blocks %}
+        <div class="First-blocks">
+          <div class="head">
+            <h2 class="heading">{{ forloop.index }}.  {{ block.settings.heading }}</h2>
+          </div>
+          <div class="flex-under">
+            <div class="second-block">
+        {% if block.settings.image1 != blank %}
+              <img src="{{ block.settings.image1 | img_url:'master' }}">
+          {% endif %}
+              <h2 class="title">{{ block.settings.title1 }}</h2>
+            </div>
+            <div class="second-block">
+        {% if block.settings.image2 != blank %}
+              <img src="{{ block.settings.image2 | img_url:'master' }}">
+          {% endif %}
+              <h2 class="title">{{ block.settings.title2 }}</h2>
+            </div>
+            <div class="second-block">
+              {% if block.settings.image3 != blank %}
+              <img src="{{ block.settings.image3 | img_url:'master' }}">
+                {% endif %}
+              <h2 class="title">{{ block.settings.title3 }}</h2>
+            </div>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+    <div class="bottom-text">
+      <p class="text-clss">{{ section.settings.texta2 }}</p>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Multiple Restore",
+    "settings": [
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Heading"
+      },
+      {
+        "id" : "text1",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "texta2",
+        "type" : "textarea",
+        "label" : "Bottom Text"
+      },
+      {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#f8f0fe"
+      }
+    ],
+    "blocks" : [
+      {
+        "name" : "block",
+        "type" : "block",
+        "settings" : [
+          {
+            "id" : "heading",
+            "type" : "text",
+            "label" : "Heading"
+          },
+          {
+            "id" : "image1",
+            "type" : "image_picker",
+            "label" : "Image"
+          },
+          {
+            "id" : "title1",
+            "type" : "text",
+            "label" : "Title"
+          },
+          {
+            "id" : "image2",
+            "type" : "image_picker",
+            "label" : "Image"
+          },
+          {
+            "id" : "title2",
+            "type" : "text",
+            "label" : "Title"
+          },
+          {
+            "id" : "image3",
+            "type" : "image_picker",
+            "label" : "Image"
+          },
+          {
+            "id" : "title3",
+            "type" : "text",
+            "label" : "Title"
+          }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Multiple Restore"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+  #{{ section.id }} {
+    background: {{ section.settings.bg-color }};
+    padding: 5rem 2rem;
+}
+  .Restore-Main{
+    max-width:1400px;
+    width: 100%;
+    margin: auto;
+  }
+  #template--15941069111455__1661253853966a0b75  .Restore-Main{
+    max-width:1200px;
+  }
+  .flex-under{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: end;
+  }
+  .second-block {
+    width: 22%;
+    margin: 1%;
+    text-align: center;
+}
+  .First-blocks{
+    border-top: 2.61158px solid #C685FF;
+    padding-bottom: 2rem;
+  }
+  .second-block img {
+/*     width: 100%; */
+    height: 125px;
+}
+  .Multiple-Rest h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 50px;
+    text-align: center;
+    letter-spacing: -0.03em;
+    color: #C685FF;
+    margin: 0;
+}
+  .Multiple-Rest p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 27px;
+    text-align: center;
+    color: #C685FF;
+        margin: 5rem auto 7rem;
+    width: 75%;
+}
+  .head h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 27px;
+    letter-spacing: -0.03em;
+  color: #C685FF;
+    margin: 10px 0;
+}
+  .second-block h2.title {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #C685FF;
+    margin-top: 2rem;
+}
+  .bottom-text p.text-clss {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.03em;
+    color: #C685FF;
+  }
+    @media(max-width:1170px){
+.Multiple-Rest p.text{
+      margin: 3rem auto;
+    width: 95%;
+
+}
+    }
+  @media(max-width:768px){
+    .second-block {
+    width: 30%;
+}
+    .second-block img {
+    height: 100px;
+}
+    .Multiple-Rest h2.heading {
+    font-size: 25px;
+    line-height: 40px;
+}
+  .Multiple-Rest p.text {
+    font-size: 18px;
+    line-height: 24px;
+}
+  .head h2.heading {
+    font-size: 18px;
+    line-height: 24px;
+}
+  .second-block h2.title {
+    font-size: 15px;
+    line-height: 22px;
+    text-align: center;
+    color: #D092F8;
+    margin-top: 2rem;
+}
+  .bottom-text p.text-clss {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 22px;
+    letter-spacing: -0.03em;
+    color: #BF7AFF;
+  }
+  }
+  @media(max-width:450px){
+    .second-block img {
+    height: 70px;
+}
+  }
+  
+</style>

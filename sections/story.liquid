@@ -1,0 +1,88 @@
+<div class="Main-story-section" id="{{ section.id }}">
+  <div class="main-contant">
+    <div class="bg-image">
+      <div class="flex-main">
+        <div class="text-contant">
+          <h2 class="h2-heading"> {{ section.settings.heading }} </h2>
+          <p class="text-cls"> {{ section.settings.text }} </p>
+          <div class="btn-contant cls-hover-cls">
+            <a href="{{ section.settings.btn-link }}"> {{ section.settings.btn-text }}</a>
+          </div>
+        </div>
+        <div class="image-section">
+          <img src="{{ section.settings.image | img_url:'master' }}">
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Story section",
+    "settings": [
+      {
+        "id" : "image",
+        "type" : "image_picker",
+        "label" : "Image"
+      },
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Heading"
+      },
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "btn-text",
+        "type" : "text",
+        "label" : "Button"
+      },
+      {
+        "id" : "btn-link",
+        "type" : "url",
+        "label" : "Button Link"
+      },
+      {
+        "id" : "bg-image",
+        "type" : "image_picker",
+        "label" : "Background Image"
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Story Section"
+      }
+    ]
+  }
+{% endschema %}
+<style>
+  .Main-story-section{
+    background-image: url({{section.settings.bg-image | img_url: 'master'}});
+   background-position: center;
+   background-size: cover;
+  }
+      .main-contant {
+    max-width: 1900px;
+    width: 100%;
+    margin: auto;
+}
+  .bg-image{
+     padding: 5% 0%;
+ }
+      .prd_flex1{
+          padding: 15% 5%;
+      }
+@media(max-width:768px){
+       .text-contant{
+        background: linear-gradient(to bottom right,rgba(198,133,255,1),rgba(250,226,195));
+      }
+       .bg-image{
+           background: #fff;
+           padding: 5% 0% 0;
+       }
+}
+ </style>

@@ -1,0 +1,208 @@
+<div class="Bio-restore-section" id="{{ section.id }}">
+<!--  <div class="bio-main-img mobile">
+    {% if  section.settings.image != blank %}
+      <a href="{{ section.settings.image-link }}">
+    <img class="rotate linear infinite" src="{{ section.settings.image | img_url:'master' }}">
+      </a>
+      {% endif %}
+  </div> -->
+  <div class="Restore-bios">
+    <header class="Bio-restore-head">
+      <h2 class="heading">{{ section.settings.heading }}</h2>
+      <p class="text">{{ section.settings.text }}</p>
+    </header>
+    <div class="Sub-head">
+      <h2 class="heading">{{ section.settings.sub-heading }}</h2>
+      <p class="text">{{ section.settings.text2 }}</p>
+    </div>
+    <div class="Main-flex-bio">
+      {% for block in section.blocks %}
+        {% if  block.settings.image != blank %}
+        <div class="First-bio">
+          <img src="{{ block.settings.image | img_url:'master' }}">
+        </div>
+        {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+     <div class="shopround " >
+       {% if section.settings.image!= blank %}
+              <a href="{{ section.settings.imge-link }}">
+                <img src="{{section.settings.image | img_url:'master'}}" class="shopimg rotate linear infinite" id="js-logo">
+              </a>
+         {% endif %}
+            </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Bio Restore Section",
+    "settings": [
+      {
+        "id" : "image",
+        "type" : "image_picker",
+        "label" : "Image"
+      },
+      {
+        "id" : "image-link",
+        "type" : "url",
+        "label" : "Image Link"
+      },
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Text"
+      },
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "sub-heading",
+        "type" : "text",
+        "label" : "Text"
+      },
+      {
+        "id" : "text2",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#fff"
+      }
+    ],
+    "blocks" : [
+      {
+        "name" : "block",
+        "type" : "block",
+        "settings" : [
+          {
+            "id" : "image",
+            "type" : "image_picker",
+            "label" : "Image"
+          }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Bio Restore Section"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+  .Bio-restore-section{
+    background: {{ section.settings.bg-color }};
+  }
+  .Restore-bios{
+    padding: 5rem 3rem 3rem;
+    margin: auto;
+    max-width: 1900px;
+    width: 100%;
+  }
+  .Main-flex-bio{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    text-align: center;
+  }
+  .First-bio{
+    width:46%;
+  }
+  .First-bio img {
+    width: 100%;
+}
+  header.Bio-restore-head {
+    max-width: 950px;
+    margin: auto;
+    width: 100%;
+}
+  .bio-main-img.mobile{
+    display: none;
+  }
+  .Bio-restore-head h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 45px;
+    text-align: center;
+    letter-spacing: -0.03em;
+    color: #C685FF;
+    margin: 0;
+}
+  .Bio-restore-head p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    color: #C685FF;
+    margin: 5% 0;
+}
+  .bio-main-img {
+    position: absolute;
+    right: 5%;
+    margin-top: -70px;
+}
+  .bio-main-img img {
+    width: 100%;
+    max-width: 120px;
+}
+  .Sub-head {
+    padding-bottom: 5%;
+    max-width: 950px;
+    margin: auto;
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    color: #C685FF;
+}
+  .Sub-head h2.heading {
+    font-weight: 700;
+        font-family: inherit;
+}
+  .Sub-head p.text {
+    font-weight: 400;
+}
+
+  @media(max-width:768px){
+    .bio-main-img.mobile{
+    display: block;
+  }
+    .bio-main-img.desktop{
+    display: none;
+  }
+    .bio-main-img {
+    margin-top: -20px;
+}
+    .bio-main-img img {
+    max-width: 100px;
+}
+    .Bio-restore-head h2.heading {
+    font-size: 25px;
+    line-height: 35px;
+}
+    .Bio-restore-head p.text {
+    font-size: 18px;
+    line-height: 24px;
+}
+    .Sub-head {
+    font-size: 15px;
+    line-height: 22px;
+}
+  }
+
+</style>

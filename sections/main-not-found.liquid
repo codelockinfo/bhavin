@@ -1,0 +1,30 @@
+<div class="EmptyState">
+  <div class="Container">
+    <div class="clsflex">
+        <div class="clsflexwidth">
+          <div>
+              <img class="clsimd404" src="{{ section.settings.image | img_url: '600x' }}" alt="">
+          </div>
+        </div>
+        <div class="clsflexwidth">
+          <h3 class="EmptyState__Title Heading u-h5">{{ '404.general.title' | t }}</h3>
+          <p class="EmptyState__Description Text--subdued">{{ '404.general.content' | t }}</p>
+          <a href="{{ routes.root_url }}" class="EmptyState__Action Button Button--primary">{{ '404.general.button' | t }}</a>
+        </div>
+      </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "404 Not Found",
+  "settings": [
+    {
+      "type": "image_picker",
+      "id": "image",
+      "label": "Image",
+      "info": "1500 x 800px .jpg recommended"
+    }
+  ]
+}
+{% endschema %}

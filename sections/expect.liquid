@@ -1,0 +1,125 @@
+<div class="main-expect-section" id="{{ section.id }}">
+  <div class="Expect-sections">
+    <header class="main-head">
+      <h2 class="heading">{{ section.settings.heading }}</h2>
+      <p class="text">{{ section.settings.text }}</p>
+    </header>
+    <div class="flex-expect">
+      {% for block in section.blocks %}
+        <div class="expect-first">
+        <h2 class="title">{{ block.settings.heading }}</h2>
+          {% if block.settings.image != blank %}
+            <img src="{{ block.settings.image | img_url: 'master' }}">
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Expect Section",
+    "settings": [
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Heading"
+      },
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "BAckground Color"
+      }
+    ],
+    "blocks" : [
+      {
+        "name" : "block",
+        "type" : "block",
+        "settings" : [
+          {
+            "id" : "heading",
+            "type" : "text",
+            "label" : "Heading"
+          },
+          {
+            "id" : "image",
+            "type" : "image_picker",
+            "label" : "Image"
+          }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Expect Section"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+  #{{ section.id }} {
+    background: {{section.settings.bg-color}};
+    padding: 5%;
+}
+  .Expect-sections {
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
+}
+  .flex-expect{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .expect-first{
+    width: 33%;
+    padding: 5%;
+    text-align: center;
+  }
+  .expect-first img {
+    max-width: 300px;
+    width: 100%;
+}
+  .main-head h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 45px;
+    text-align: center;
+    color: #C685FF;
+}
+  .expect-first h2.title {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+      color: #C685FF;
+}
+
+  @media(max-width:768px){
+    .expect-first{
+    width: 100%;
+  }
+    .main-head h2.heading {
+    font-size: 25px;
+    line-height: 35px;
+}
+  .expect-first h2.title {
+    font-size: 15px;
+    line-height: 22px;
+}
+  }
+
+</style>

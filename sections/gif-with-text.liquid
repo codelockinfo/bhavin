@@ -1,0 +1,118 @@
+<div class="main-gif-with-text" id="{{ section.id }}">
+  <div class="Gif-with-text">
+    <div class="conent-start">
+      <h2 class="heading">{{ section.settings.heading }}</h2>
+      <p class="text">{{ section.settings.text }}</p>
+      <p class="text">{{ section.settings.text2 }}</p>
+      {% if section.settings.image != blank %}
+      <div class="gif-section">
+        <img src="{{ section.settings.image | img_url: 'master' }}">
+      </div>
+      {% endif %}
+      <p class="text">{{ section.settings.text3 }}</p>
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Gif with text",
+    "settings": [
+      {
+        "id" : "image",
+        "type" : "image_picker",
+        "label" : "Image"
+      },
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Heading"
+      },
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "text2",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "text3",
+        "type" : "textarea",
+        "label" : "After gif Text"
+      },
+      {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#fff"
+      },
+      {
+        "id" : "text-color",
+        "type" : "color",
+        "label" : "Text Color",
+        "default" : "#000"
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Gif with text"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+  .main-gif-with-text {
+    background: {{section.settings.bg-color}};
+}
+  .Gif-with-text {
+    max-width: 1200px;
+    margin: auto;
+    width: 100%;
+    padding: 5%;
+}
+  .conent-start h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 55px;
+    text-align: center;
+    letter-spacing: -0.03em;
+    color: #C685FF;
+}
+  .conent-start p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 450;
+    font-size: 24px;
+    line-height: 28px;
+    text-align: center;
+    letter-spacing: -0.03em;
+    font-feature-settings: 'pnum' on, 'lnum' on;
+    color: #42494E;
+}
+  .gif-section {
+    text-align: center;
+    padding: 2rem 0;
+}
+  .gif-section img {
+    width: 100%;
+    max-width: 650px;
+}
+  @media(max-width: 768px){
+    .conent-start h2.heading {
+    font-size: 25px;
+    line-height: 45px;
+}
+  .conent-start p.text {
+    font-size: 18px;
+    line-height: 22px;
+}
+  }
+</style>

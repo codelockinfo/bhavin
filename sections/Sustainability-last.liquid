@@ -1,0 +1,148 @@
+<div class="Sustainability-Last-Section" id="{{ section.id }}">
+  <div class="main-Sustainability-Last">
+    <div class="Contant-Sustainability-Last">
+      <h2 class="heading">{{ section.settings.heading }}</h2>
+      <p class="text"> {{ section.settings.text }} </p>
+      {% if section.settings.btn-text != blank %}
+      <div class="btncenter" >
+        <a class="Button-Last cls-hover-cls" href="{{ section.settings.btn-link }}">{{ section.settings.btn-text }}</a>
+      </div>
+      {% endif %}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Sustainability Last",
+    "settings": [
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Text"
+      },
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "btn-text",
+        "type" : "text",
+        "label" : "Button"
+      },
+      {
+        "id" : "btn-link",
+        "type" : "url",
+        "label" : "Button Link"
+      },
+      {
+        "id" : "max-wdt",
+        "type" : "text",
+        "label" : "Max Width",
+        "default" : "680px"
+      },
+      {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#f2ece8"
+      },
+      {
+        "id" : "text-color",
+        "type" : "color",
+        "label" : "Text Color",
+        "default" : "#C685FF"
+      },
+      {
+        "id" : "btn-bg-color",
+        "type" : "color",
+        "label" : "Button Background Color",
+        "default" : "#fff"
+      },
+      {
+        "id" : "btn-text-color",
+        "type" : "color",
+        "label" : "Button Text Color",
+        "default" : "#C685FF"
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Sustainability Last"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+
+  #{{ section.id }} .Contant-Sustainability-Last {
+    margin: auto;
+    width: 100%;
+    max-width: {{ section.settings.max-wdt }};
+}
+  #{{ section.id }} .main-Sustainability-Last {
+    padding: 5rem 2rem;
+    background: {{ section.settings.bg-color }};
+}
+  #{{ section.id }} .Contant-Sustainability-Last h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 45px;
+    text-align: center;
+    color: {{ section.settings.text-color }};
+    margin: 0;
+}
+  #{{ section.id }} .Contant-Sustainability-Last p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    color: {{ section.settings.text-color }};
+    margin: 2rem 0;
+}
+  #{{section.id}} .Button-Last {
+    background: {{section.settings.btn-bg-color}};
+    border-radius: 66px;
+    width: 100%;
+    max-width: 300px;
+         padding: 13px 80px;
+    text-align: center;
+    margin: auto;
+        opacity: 1;
+        font-weight: bold;
+        font-family: 'TTNormsProbold';
+}
+  #{{section.id}} .Button-Last a {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 27px;
+    text-align: center;
+    color: {{section.settings.btn-text-color}};;
+}
+
+  @media(max-width: 768px){
+    #{{ section.id }} .Contant-Sustainability-Last p.text {
+    font-size: 18px;
+    line-height: 24px;
+}
+    #shopify-section-template--15835877441695__1661234736fd77b7ad .main-Sustainability-Last .Contant-Sustainability-Last h2.heading {
+    font-size: 38px;
+    line-height: 43px;
+}
+     #{{ section.id }} .Contant-Sustainability-Last h2.heading {
+    font-size: 25px;
+    line-height: 30px;
+}
+  }
+
+</style>

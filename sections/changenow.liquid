@@ -1,0 +1,57 @@
+<div class="changibgcolor">
+<div class="changincontainer">
+    <div class="changiflex">
+        {% for block in section.blocks %}
+            <div class="changiflex1">
+                <div class="changdown">
+                    <img src="{{block.settings.globalmg | img_url:'master'}}" class="globalmg">
+                </div>
+            </div>
+        {% endfor %}
+    </div>
+    <div class="knowdwtail">
+        <p class="knowmere cls-hover-cls"><a href="{{section.settings.moreurl}}">{{section.settings.mortitle}}</a></p>
+    </div>
+</div>
+</div>
+
+{% schema %}
+{
+"name": "changenow",
+
+"settings": [
+
+{
+    "id": "mortitle",
+    "type": "text",
+     "label": "button"
+    },
+    {
+        "id": "moreurl",
+        "type": "url",
+         "label": "Button url"
+        }
+],
+"blocks":[
+{
+"type" : "block",
+"name" : "block",
+"settings" : [
+{
+    "id" : "globalmg",
+    "type" : "image_picker",
+    "label" : "image"
+  }
+]
+}
+
+],
+"presets" : [
+{
+  "name" : "changenow",
+  "category" : "changenow"
+
+  }
+]
+}
+{% endschema %}

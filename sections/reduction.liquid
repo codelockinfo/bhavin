@@ -1,0 +1,182 @@
+<div class="Reduction-section" id="{{ section.id }}">
+  <div class="border-sectionss">
+    <div class="margin-section-red">
+      <div class="flex-reductions {% if section.settings.option-select == '1' %}Flex-direction-change{% endif %}">
+        {% if section.settings.image != blank %}
+        <div class="image-reduction width-reduction-alll">
+          <img src="{{ section.settings.image | img_url: 'master' }}">
+        </div>
+        {% endif %}
+    <div class="Main-reduction width-reduction-alll">
+      <header class="header">
+        <h2 class="heading"> {{ section.settings.heading }} </h2>
+      </header>
+      <div class="flex-section-red">
+      {% for block in section.blocks %}
+        <div class="First-name">
+          <h2 class="title"> {{ block.settings.title }} </h2>
+        </div>
+      {% endfor %}
+      </div>
+    </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+{
+  "name": "Reduction Section",
+  "settings": [
+    {
+      "id" : "image",
+      "type" : "image_picker",
+      "label" : "Image"
+    },
+    {
+      "id" : "heading",
+      "type" : "text",
+      "label" : "Heading"
+    },
+    {
+      "type": "select",
+      "id": "option-select",
+      "default": "2",
+      "options": [
+       {
+          "value": "1",
+          "label": "Right"
+       },
+       {
+          "value": "2",
+          "label": "Left"
+        }
+      ],
+      "label": "Image Position"
+    },
+    {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#F2ECE8"
+      }
+  ],
+  "blocks" : [
+    {
+      "name" : "block",
+      "type" : "block",
+      "settings" : [
+        {
+          "id" : "title",
+          "type" : "text",
+          "label" : "Heading"
+        }
+      ]
+    }
+  ],
+  "presets" : [
+    {
+      "name" : "Reduction Section"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+
+  .margin-section-red {
+    padding: 5% 0;
+}
+  .flex-reductions {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+}
+  .image-reduction img {
+    width: 100%;
+}
+  .width-reduction-alll {
+    width: 50%;
+}
+  .border-sectionss{
+    border-bottom: 1px solid #C685FF;
+    max-width: 1900px;
+    width: 100%;
+    margin: auto;
+  }
+.Main-reduction {
+  padding: 0 5%;
+}
+.Reduction-section {
+  background: {{ section.settings.bg-color }};
+  padding: 0 5%;
+}
+  .flex-reductions.Flex-direction-change {
+    flex-direction: row-reverse;
+}
+.flex-section-red{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  margin-top: 3rem;
+}
+.header h2.heading {
+  font-family: 'TT Norms Pro';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 35px;
+  line-height: 45px;
+  text-align: center;
+  color: #42494E;
+}
+.First-name h2.title {
+  font-family: 'TT Norms Pro';
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 40px;
+  text-align: center;
+  color: #42494E;
+}
+.First-name {
+  width: 31%;
+  margin: 1%;
+  border: 2px solid #42494E;
+  border-radius: 104px;
+}
+  @media(max-width:1000px){
+    .First-name {
+  width:48%;
+}
+  }
+@media(max-width:768px){
+  .width-reduction-alll {
+    width: 100%;
+}
+  .First-name {
+  width:31%;
+}
+  .Main-reduction {
+    padding: 5% 0;
+}
+.header h2.heading {
+  font-size: 25px;
+  line-height: 35px;
+}
+  .First-name h2.title {
+  font-size: 15px;
+    line-height: 35px;
+}
+}
+@media(max-width:414px){
+  .First-name {
+  width: 48%;
+}
+}
+  @media(max-width:300px){
+    .First-name {
+  width: 100%;
+}
+  }
+</style>

@@ -1,0 +1,188 @@
+<div class="addresscontact">
+  <div class="adrescontain">
+    <div class="addressflex">
+      {% for block in section.blocks %}
+        <div class="addressflex1">
+            <div class="addresdots">
+              <h3 class="contactitle">{{ block.settings.textbox }}</h3>
+              <p class="komecontain"><a href="{{ block.settings.komeurl1 }}">{{ block.settings.kome1 }}</a></p>
+                   <p class="komecontain"><a href="{{ block.settings.komeurl2 }}">{{ block.settings.kome2 }}</a></p>
+                   <p class="komecontain"><a href="{{ block.settings.komeurl3 }}">{{ block.settings.kome3 }}</a></p>
+                   <p class="komecontain"><a href="{{ block.settings.komeurl4 }}">{{ block.settings.kome4 }}</a></p>
+              <p class="komecontain"><a href="{{ block.settings.komeurl5 }}">{{ block.settings.kome5 }}</a></p>
+            </div>
+        </div>
+      {% endfor %}
+      
+    </div>
+  </div>
+
+  
+</div>
+  <style>
+.adrescontain{
+  max-width: 1200px;
+    padding: 0 10px;
+    width: 100%;
+    margin: 0 auto;
+}
+    .addressflex{
+      display: flex;
+    flex-wrap: wrap;
+    }
+    .addressflex1{
+          flex: 0 0 33.33%;
+    max-width: 33.33%;
+    }
+    .addresscontact {
+    background-color: #fff;
+          padding: 5% 0;
+}
+    .contactitle {
+    font-weight: bold;
+    color: #C685FF;
+    font-size: 18px;
+    line-height: 25px;
+      font-family: 'TT Norms Pro';
+}
+    .komecontain {
+    color: #C685FF;
+    font-size: 18px;
+    line-height: 25px;
+          margin-bottom: 2px;
+          font-family: 'TT Norms Pro';
+}
+    .komecontain a {
+    border-bottom: 1px solid #C685FF;
+}
+    .addressflex1:first-child .komecontain a {
+      border-bottom:none;
+    }
+
+    @media only screen and (max-width: 1440px) {
+.addressflex{
+      padding-left: 12%;
+}
+    }
+
+       @media only screen and (max-width: 820px) {
+.addressflex1 {
+    flex: 0 0 50%;
+    max-width: 50%;
+      margin-bottom: 3rem;
+}
+         .contactitle{
+               margin-bottom: 15px;
+         }
+    }
+    @media(max-width:768px){
+      .komecontain {
+    font-size: 15px;
+    line-height: 22px;
+}
+    }
+         @media only screen and (max-width: 540px) {
+    .addressflex {
+    padding-left: 3%;
+}
+           img.Header__LogoImage.Header__LogoImage--primary{
+/*                  display: none; */
+           }
+           .komecontain{
+/*                  font-size: 15px; */
+           }
+           .addressflex{
+                 text-align: center;
+           }
+           .addressflex1 {
+    flex: 0 0 100%;
+    max-width: 100%;
+           }
+    }
+         
+  </style>
+  {% schema %}
+  {
+  "name": "contactdetail",
+
+  "settings": [
+
+  {
+    "id" : "SAMPLEfe",
+    "type" : "text",
+    "label" : "BUTTON Sample"
+  }
+  ],
+  "blocks":[
+  {
+  "type" : "block",
+  "name" : "block",
+  "settings" : [
+      {
+    "id" : "textbox",
+    "type" : "text",
+    "label" : "Heading"
+  },
+          {
+    "id" : "kome1",
+    "type" : "text",
+    "label" : "socialname1"
+  },
+              {
+    "id" : "komeurl1",
+    "type" : "url",
+    "label" : "url1"
+  },
+              {
+    "id" : "kome2",
+    "type" : "text",
+    "label" : "socialname2"
+  },
+              {
+    "id" : "komeurl2",
+    "type" : "url",
+    "label" : "url2"
+  },
+              {
+    "id" : "kome3",
+    "type" : "text",
+    "label" : "socialname3"
+  },
+              {
+    "id" : "komeurl3",
+    "type" : "url",
+    "label" : "url3"
+  },
+              {
+    "id" : "kome4",
+    "type" : "text",
+    "label" : "socialname4"
+  },
+              {
+    "id" : "komeurl4",
+    "type" : "url",
+    "label" : "url4"
+  },
+                {
+    "id" : "kome5",
+    "type" : "text",
+    "label" : "socialname5"
+  },
+              {
+    "id" : "komeurl5",
+    "type" : "url",
+    "label" : "url5"
+  }
+  ]
+  }
+
+  ],
+  "presets" : [
+  {
+    "name" : "contactdetail",
+    "category" : "contactdetail"
+
+    }
+  ]
+  }
+  {% endschema %}

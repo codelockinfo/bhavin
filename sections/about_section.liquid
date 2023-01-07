@@ -1,0 +1,150 @@
+<div class="main-about-section" id="{{ section.id }}">
+  <div class="Section-blocks">
+    <header clsaa="headings-cls">
+      <h2 class="heading">{{ section.settings.heading }}</h2>
+    </header>
+    <div class="block-section-flex">
+      {% for block in section.blocks %}
+        <div class="main-first">
+          <div class="image-cls">
+            <img src="{{ block.settings.image | img_url:'master' }}">
+          </div>
+          <div class="headeing-block">
+            <h2 class="founderbold title ">{{ block.settings.title }}</h2>
+            <h2 class="title">{{ block.settings.position }}</h2>
+          </div>
+          <div class="other-texts">
+            <p class="text">{{ block.settings.text }}</p>
+          </div>
+        </div>
+        {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "About section",
+    "settings": [
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Heading"
+      },
+      {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#fff"
+      }
+    ],
+    "blocks" : [
+      {
+        "name" : "block",
+        "type" : "block",
+        "settings" : [
+          {
+            "id" : "image",
+            "type" : "image_picker",
+            "label" : "Image"
+          },
+          {
+            "id" : "title",
+            "type" : "text",
+            "label" : "Heading"
+          },
+          {
+            "id" : "position",
+            "type" : "text",
+            "label" : "Position"
+          },
+          {
+            "id" : "text",
+            "type" : "textarea",
+            "label" : "Text"
+          }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "About Section"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+  .main-about-section {
+    padding: 5rem 2rem;
+    background: {{ section.settings.bg-color }};
+}
+  .Section-blocks {
+    max-width: 834px;
+    width: 100%;
+    margin: auto;
+}
+  .block-section-flex {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+}
+  .main-first {
+    width: 44%;
+}
+  .image-cls img {
+    width: 100%;
+    padding-right: 10%;
+}
+  .headeing-block {
+    margin: 2rem 0;
+}
+  .headeing-block h2.title {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    letter-spacing: -0.03em;
+  color: #C685FF;
+    margin: 0;
+}
+  h2.founderbold.title{
+        font-family: 'TTNormsProbold';
+  }
+  .other-texts p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+   color: #C685FF;
+}
+  .founderbold.title {
+    font-weight: bold;
+}
+  
+  @media(max-width:768px){
+    .main-about-section {
+    padding: 2rem;
+}
+    .headeing-block h2.title {
+    font-size: 18px;
+    line-height: 24px;
+}
+    .other-texts p.text {
+    font-size: 18px;
+    line-height: 24px;
+}
+  }
+
+  @media(max-width:500px){
+    .main-first {
+    width: 100%;
+    margin-top: 3rem;
+}
+  }
+  
+</style>

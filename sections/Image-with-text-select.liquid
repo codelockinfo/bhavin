@@ -1,0 +1,294 @@
+<div class="Main-Image-with-texts" id="{{ section.id }}">
+  <div class="main-position-section">
+    <div class="flex-overlay-section {% if section.settings.option-select == '1' %}Flex-direction-change{% endif %}  {%- if section.settings.show_border -%} clssetborder {% endif %}">
+      {% if section.settings.image != blank %}
+     <div class="image-section-over width-over-combo">
+        <img class="desktopcls" src="{{ section.settings.image | img_url: 'master' }}">
+        {% if section.settings.mobilrimage != blank %}
+          <img class="mobilecls" src="{{ section.settings.mobilrimage | img_url: 'master' }}">
+        {% else %}
+          <img class="mobilecls" src="{{ section.settings.image | img_url: 'master' }}">
+        {% endif %}
+      </div>
+        {% endif %}
+      <div class="text-over-section width-over-combo">
+        <h2 class="heading">{{ section.settings.heading }}</h2>
+        <p class="text">{{ section.settings.text }}</p>
+        <p class="text text-cls">{{ section.settings.text2 }}</p>
+        {% if section.settings.btn-text != blank %}
+            <a href="{{ section.settings.btn-link }}">
+        <div class="button-overlay cls-hover-cls">
+        <span>{{ section.settings.btn-text }} </span>
+        </div>
+           </a>  
+        {% endif %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Image With Text Select",
+    "settings": [
+      {
+        "id" : "image",
+        "type" : "image_picker",
+        "label" : "Image"
+      },
+       {
+        "id" : "mobilrimage",
+        "type" : "image_picker",
+        "label" : "Mobile Image"
+      },
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Heading"
+      },
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "text2",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+       {
+      "type": "checkbox",
+      "id": "show_border",
+      "label": "Show Border",
+      "default": false
+      },
+       {
+        "id" : "bordercolor",
+        "type" : "color",
+        "label" : "Border Color",
+        "default" : "#C685FF"
+      },
+      {
+      "type": "select",
+      "id": "option-select",
+      "default": "2",
+      "options": [
+       {
+          "value": "1",
+          "label": "Right"
+       },
+       {
+          "value": "2",
+          "label": "Left"
+        }
+      ],
+      "label": "Image Position"
+    },
+      {
+        "id" : "btn-text",
+        "type" : "text",
+        "label" : "Button"
+      },
+      {
+        "id" : "btn-link",
+        "type" : "url",
+        "label" : "Button Link"
+      },
+      {
+        "id" : "bg-image",
+        "type" : "image_picker",
+        "label" : "Background Image"
+      },
+      {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#fff"
+      },
+      {
+        "id" : "text-color",
+        "type" : "color",
+        "label" : "Text Color",
+        "default" : "#000"
+      },
+      {
+        "id" : "text-size",
+        "type" : "text",
+        "label" : "Text Size",
+        "default" : "24px"
+      },
+      {
+        "id" : "text-height",
+        "type" : "text",
+        "label" : "Text Line Height",
+        "default" : "30px"
+      },
+      {
+        "id" : "text-size-mobile",
+        "type" : "text",
+        "label" : "Mobile Text Size",
+        "default" : "18px"
+      },
+      {
+        "id" : "text-height-mobile",
+        "type" : "text",
+        "label" : "MObile Text Line Height",
+        "default" : "25px"
+      },
+      {
+        "id" : "btn-bg-color",
+        "type" : "color",
+        "label" : "Button Background Color",
+        "default" : "#000"
+      },
+      {
+        "id" : "btn-text-color",
+        "type" : "color",
+        "label" : "Button Text Color",
+        "default" : "#fff"
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Image With Text Select"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+  	.desktopcls{
+     display:block;
+   }
+    .mobilecls{
+      display:none;
+    }
+.clssetborder{
+      border: 2px solid;
+    border-color: {{section.settings.bordercolor}};
+  border-radius: 10px;
+}
+  .main-position-section {
+    padding: 5%;
+    max-width: 1900px;
+    width: 100%;
+    margin: auto;
+}
+  #{{section.id}}{
+    background-size: cover;
+    background-repeat: no-repeat;
+    {% if section.settings.bg-image != blank %}
+      background-image: url({{section.settings.bg-image | img_url:'master'}});
+      {% else %}
+    background-color: {{section.settings.bg-color}};
+      {% endif %}
+      
+  }
+  .flex-overlay-section{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .flex-overlay-section.Flex-direction-change{
+    flex-direction: row-reverse;
+  }
+  .width-over-combo {
+    width: 50%;
+}
+  .image-section-over img {
+    width: 100%;
+}
+  .text-over-section {
+    padding: 0 8%;
+}
+  #{{section.id}} .text-over-section h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 42px;
+    color: {{section.settings.text-color}};
+}
+  #{{section.id}} .text-over-section p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 600;
+    font-size: {{ section.settings.text-size }};
+    line-height:  {{ section.settings.text-height }};
+    color: {{section.settings.text-color}};
+            width: 77%;
+
+}
+  #{{section.id}} .text-over-section p.text.text-cls {
+    font-weight: 400;
+}
+
+  #{{section.id}} .button-overlay span {
+    font-family: 'TTNormsProbold';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 27px;
+    text-align: left;
+    color: #ffffff;
+     padding: 15px 44px;
+    border-radius: 30px;
+     background: {{section.settings.btn-bg-color}};
+}
+        div#template--15941069275295__166202714402a669bb .button-overlay span{
+            color: #C685FF;
+        padding: 12px 95px;
+        }
+
+       
+  @media(max-width:991px){
+div#template--15941069275295__166202714402a669bb .button-overlay span{
+    padding: 12px 76px;
+}
+  }
+  @media(max-width:768px){
+          .flex-overlay-section{	
+      padding: 3%;	
+  }
+  .flex-overlay-section{
+/*       padding: 3%; */
+<!--      margin-top: 7%; -->
+  }
+    .width-over-combo {
+    width: 100%;
+}
+    .text-over-section {
+    padding: 0;
+      margin-top: 10%;
+}
+     #{{section.id}} .text-over-section h2.heading {
+    font-size: 25px;
+    line-height: 30px;
+}
+   #{{section.id}} .text-over-section p.text {
+    font-size: {{ section.settings.text-size-mobile }};
+    line-height:  {{ section.settings.text-height-mobile }};
+}
+      .main-position-section {
+    padding: 7% 5%;
+}
+   .desktopcls{
+     display:none;
+   }
+    .mobilecls{
+      display:block;
+    }
+  
+  }
+
+@media(max-width:1480px){
+  #{{section.id}} .text-over-section p.text {
+    
+    width: 100%;
+
+  }
+    }
+  
+</style>

@@ -1,0 +1,162 @@
+<div class="Garments-Section" id="{{ section.id }}">
+  <div class="Garments">
+    <div class="Garment-head-flex">
+      <div class="contants-gram width-cls-sec">
+        <h2 class="heading"> {{ section.settings.heading }} </h2>
+        <p class="text"> {{ section.settings.text }} </p>
+        {% if section.settings.image2 != blank %}
+          <div class="size-img">
+            <img src="{{ section.settings.image2 | img_url:'master' }}">
+          </div>
+        {% endif %}
+         <p class="text tex-garment"> {{ section.settings.text2 }} </p>
+        {% if section.settings.button-text != blank %}
+        <div class="button-cls cls-hover-cls">
+          <a href="{{ section.settings.btn-url }}"> {{ section.settings.button-text }}</a>
+        </div>
+          {% endif %}
+      </div>
+      {% if section.settings.image != blank %}
+      <div class="img-sections width-cls-sec">
+        <img src="{{ section.settings.image | img_url:'master' }}">
+      </div>
+        {% endif %}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Garments Section",
+    "settings": [
+      {
+        "id" : "image",
+        "type" : "image_picker",
+        "label" : "Image"
+      },
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Heading"
+      },
+      {
+        "id" : "image2",
+        "type" : "image_picker",
+        "label" : "Size Image"
+      },
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "text2",
+        "type" : "textarea",
+        "label" : "Bottom Text"
+      },
+      {
+        "id" : "button-text",
+        "type" : "text",
+        "label" : "Button Text"
+      },
+      {
+        "id" : "btn-url",
+        "type" : "url",
+        "label" : "Button link"
+      },
+      {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#fff"
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "garments Section"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+  .Garments-Section{
+    background: {{section.settings.bg-color}};
+  }
+  .Garment-head-flex{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+  }
+  .width-cls-sec{
+    width: 50%;
+  }
+  .img-sections img{
+    width: 100%;
+  }
+  .Garments {
+    padding: 5%;
+    max-width: 1900px;
+    width: 100%;
+    margin: auto;
+}
+  .contants-gram {
+    padding: 0 5%;
+}
+  .contants-gram h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 40px;
+    letter-spacing: -0.03em;
+     color: #C685FF;
+}
+  .contants-gram p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+     color: #C685FF;
+}
+  p.text.tex-garment {
+    font-size: 15px;
+    line-height: 20px;
+}
+  .button-cls a {
+    font-family: 'TTNormsProbold';
+    font-style: normal;
+    font-weight: bold;
+    font-size: 15px;
+    line-height: 27px;
+    text-align: center;
+    color: #FFFFFF;
+    padding: 10px 30px;
+   color: #C685FF;
+    border-radius: 66px;
+}
+  @media(max-width:768px){
+    .Garment-head-flex{
+      flex-direction: column-reverse;
+    }
+    .width-cls-sec{
+    width: 100%;
+  }
+    .contants-gram {
+    padding: 5% 0 0;
+}
+    .contants-gram h2.heading {
+    font-size: 25px;
+line-height: 30px;
+}
+  .contants-gram p.text {
+    font-size: 15px;
+line-height: 22px;
+}
+  }
+  
+</style>

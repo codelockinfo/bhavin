@@ -1,0 +1,317 @@
+<div class="main-popup-cls" id="{{ section.id }}">
+  <div class="popups-cls">
+<div class="custom-model-main">
+    <div class="custom-model-inner">        
+    <div class="close-btn">×</div>
+        <div class="custom-model-wrap">
+            <div class="pop-up-content-wrap">
+               <div class="flex-pop">
+                 <div class="img-pop width-pop">
+                   <img class="desktop" src="{{ section.settings.image | img_url: 'master' }}">
+                   {% if section.settings.mobileimage != blank %}
+                     <img class="mobile" src="{{ section.settings.mobileimage | img_url: 'master' }}">
+                     {% else %}
+                     <img class="mobile" src="{{ section.settings.image | img_url: 'master' }}">
+                   {% endif %}
+                 </div>
+                 <div class="contant-pop width-pop">
+                   <h2 class="heading">{{ section.settings.heading }}</h2>
+                   <p class="text">{{ section.settings.text }}</p>
+                   <div class="button-pop cls-hover-cls">
+                     <a href="{{ section.settings.btn-link }}">{{ section.settings.btn-text }}</a>
+                   </div>
+                 </div>
+               </div>
+            </div>
+        </div>  
+    </div>  
+    <div class="bg-overlay"></div>
+</div> 
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Popup Custom",
+    "settings": [
+      {
+        "id" : "image",
+        "type" : "image_picker",
+        "label" : "Image"
+      },
+      {
+        "id" : "mobileimage",
+        "type" : "image_picker",
+        "label" : "mobile Image"
+      },
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Heading"
+      },
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "btn-text",
+        "type" : "text",
+        "label" : "Button"
+      },
+      {
+        "id" : "btn-link",
+        "type" : "url",
+        "label" : "Button link"
+      },
+      {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Image",
+        "default" : "#fff"
+      },
+      {
+        "id" : "text-color",
+        "type" : "color",
+        "label" : "Text Color",
+        "default" : "#000"
+      },
+      {
+        "id" : "btn-bg-color",
+        "type" : "color",
+        "label" : "Button Background Color",
+        "default" : "#000"
+      },
+      {
+        "id" : "btn-text-color",
+        "type" : "color",
+        "label" : "Button Text Color",
+        "default" : "#fff"
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Popup Custom"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+.custom-model-main {
+  text-align: center;
+  overflow: hidden;
+  position: fixed;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  -webkit-overflow-scrolling: touch;
+  outline: 0;
+  opacity: 0;
+  -webkit-transition: opacity 0.15s linear, z-index 0.15;
+  -o-transition: opacity 0.15s linear, z-index 0.15;
+  transition: opacity 0.15s linear, z-index 0.15;
+  z-index: -1;
+  overflow-x: hidden;
+  overflow-y: auto;
+  margin: 20px;
+    border: none;
+}
+.img-pop img.mobile{
+  display: none;
+}
+.model-open {
+  z-index: 99999;
+  opacity: 1;
+  overflow: hidden;
+}
+.custom-model-inner {
+  -webkit-transform: translate(0, -25%);
+  -ms-transform: translate(0, -25%);
+  transform: translate(0, -25%);
+  -webkit-transition: -webkit-transform 0.3s ease-out;
+  -o-transition: -o-transform 0.3s ease-out;
+  transition: -webkit-transform 0.3s ease-out;
+  -o-transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out;
+  transition: transform 0.3s ease-out, -webkit-transform 0.3s ease-out;
+  display: inline-block;
+  vertical-align: middle;
+  width: 100%;
+  margin: 30px auto;
+  max-width: 700px;
+}
+.custom-model-wrap {
+  display: block;
+  width: 100%;
+  position: relative;
+  background-color: {{section.settings.bg-color}};
+/*   border: 1px solid #999; */
+/*   border: 1px solid rgba(0, 0, 0, 0.2); */
+  border: none;
+  border-radius: 10px;
+  -webkit-box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  box-shadow: 0 3px 9px rgba(0, 0, 0, 0.5);
+  background-clip: padding-box;
+  outline: 0;
+  text-align: left;
+  -webkit-box-sizing: border-box;
+  -moz-box-sizing: border-box;
+  box-sizing: border-box;
+}
+.model-open .custom-model-inner {
+  -webkit-transform: translate(0, 0);
+  -ms-transform: translate(0, 0);
+  transform: translate(0, 0);
+  position: relative;
+  z-index: 999;
+}
+.model-open .bg-overlay {
+  background: #ffffff00;
+  z-index: 99;
+}
+.bg-overlay {
+  background: #ffffff00;
+  height: 100vh;
+  width: 100%;
+  position: fixed;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  z-index: 0;
+  -webkit-transition: background 0.15s linear;
+  -o-transition: background 0.15s linear;
+  transition: background 0.15s linear;
+}
+.close-btn {
+    position: absolute;
+    right: 15px;
+    top: -15px;
+    cursor: pointer;
+    z-index: 99;
+    font-size: 50px;
+    color: #c187ff;
+}
+
+/*   popup css end */
+
+  .flex-pop {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+    justify-content: space-between;
+}
+  .width-pop {
+    width: 50%;
+}
+  .img-pop img {
+    width: 100%;
+}
+  .contant-pop {
+    width: 100%;
+    max-width: 250px;
+    margin: auto;
+    padding: 5%;
+}
+  .contant-pop h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 42px;
+    text-align: center;
+    color: {{section.settings.text-color}};
+}
+  .contant-pop p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: {{section.settings.text-color}};
+}
+  .button-pop {
+    background: {{section.settings.btn-bg-color}};
+    text-align: center;
+    border-radius: 66px;
+    padding: 5px 0;
+}
+  .button-pop a {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 27px;
+    text-align: center;
+    color: {{section.settings.btn-text-color}};
+}
+@media screen and (min-width:800px){
+	.custom-model-main:before {
+	  content: '';
+	  display: inline-block;
+	  height: auto;
+	  vertical-align: middle;
+	  margin-right: -0px;
+	  height: 100%;
+	}
+}
+@media screen and (max-width:799px){
+/*   .custom-model-inner{margin-top: 40px;} */
+  .contant-pop {
+/*     padding: 5% 25%; */
+}
+  .img-pop img.mobile{
+  display: block;
+}
+  .img-pop img.desktop{
+  display: none;
+}
+  .flex-pop{
+      display: block;
+  }
+  .img-pop.width-pop{
+      width: 100%;
+  text-align: center;
+  }
+  .img-pop img{
+/*     height:400px; */
+/*   max-width: 450px; */
+  width: 100%;
+  }
+  .contant-pop{
+/*       width: 100%; */
+  }
+  .custom-model-inner{
+       margin: 3px auto; 
+  }
+}
+@media(max-width:600px){
+      .contant-pop h2.heading {
+    font-size: 25px;
+    line-height: 32px;
+}
+  .contant-pop p.text {
+    font-size: 15px;
+    line-height: 21px;
+}
+}
+  @media(max-width:300px){
+  .img-pop img {
+    height: auto;
+}
+}
+</style>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+<script>
+  $(this).on('load', function() {
+    $(".custom-model-main").addClass('model-open');
+  }); 
+  $(".close-btn, .bg-overlay").click(function(){
+    $(".custom-model-main").removeClass('model-open');
+  });
+</script>

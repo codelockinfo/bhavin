@@ -1,0 +1,188 @@
+<div class="Minimum-Section" id="{{ section.id }}">
+  <div class="border-sections">
+    <div class="minimum-flex-sect">
+  <div class="main-Minimum">
+    {% if section.settings.image != blank %}
+    <div class="images-minimum width-mini">
+      <img src="{{ section.settings.image | img_url: 'master' }}">
+    </div>
+    {% endif %}
+    <div class="Contant-mini width-mini">
+      <h2 class="heading">{{ section.settings.heading }}</h2>
+      <p class="text"> {{ section.settings.text }} </p>
+    </div>
+  </div>
+  
+    <div class="side-img-mini shopround">
+      <a href="{{ section.settings.image-link }}">
+        <img class="rotate linear infinite shopimg" src="{{ section.settings.image2 | img_url: 'master' }}"  id="js-logo">
+      </a>
+    </div>
+ 
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Minimum Section",
+    "settings": [
+      {
+        "id" : "image",
+        "type" : "image_picker",
+        "label" : "Image"
+      },
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Text"
+      },
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "image2",
+        "type" : "image_picker",
+        "label" : "Side Image"
+      },
+      {
+        "id" : "image-link",
+        "type" : "url",
+        "label" : "Image Link"
+      },
+      {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#F2ECE8"
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Minimum Section"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+  .Minimum-Section {
+/*     background: #F2ECE8; */
+    background: {{ section.settings.bg-color }};
+    padding: 0 5%;
+    
+}
+  .border-sections{
+    border-top: 1px solid #C685FF;
+    border-bottom: 1px solid #C685FF;
+    max-width: 1900px;
+    width: 100%;
+    margin: auto;
+  }
+  .minimum-flex-sect{
+    display: flex;
+    align-items: end;
+    padding: 5% 0;
+  }
+  .main-Minimum {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    align-items: center;
+}
+  .width-mini{
+    width: 50%;
+  }
+  .side-img-mini img {
+    max-width: 120px;
+    width: 100%;
+}
+  .side-img-mini {
+    position: absolute;
+    right: 9%;
+}
+  .Contant-mini {
+    padding: 0 5%;
+}
+  .Contant-mini h2.heading {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 35px;
+    line-height: 45px;
+    text-align: center;
+    color: #42494E;
+    margin: 0;
+}
+  .Contant-mini p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 18px;
+    line-height: 24px;
+    text-align: center;
+    color: #42494E;
+    margin-top: 15px;
+}
+
+  @media(max-width:768px){
+    .width-mini{
+    width: 100%;
+  }
+    .side-img-mini {
+    display: none;
+}
+    .Contant-mini h2.heading {
+    font-size: 25px;
+    line-height: 35px;
+}
+    .Contant-mini p.text {
+    font-size: 15px;
+    line-height: 22px;
+}
+    .Contant-mini {
+    padding: 5% 0;
+}
+    .side-img-mini img {
+    max-width: 100px;
+    width: 100%;
+}
+}
+   .shopround.Active{
+    top: unset;
+    display: block;
+    position: fixed;
+    bottom: 95px;
+    right: 3%;
+    text-align: end;
+    opacity: 1;
+    z-index: 999;
+  }
+  
+
+</style>
+
+<link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.css">
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script>
+  $(window).scroll(function(){
+
+    if ($(this).scrollTop() > 1000) {
+       $('.shopround').addClass('Active');
+      $('.shopround').attr('data-aos','fade-up');
+        console.log('vdfgre');
+    } else {
+       $('.shopround').removeClass('Active');
+      $('.shopround').attr('data-aos','');
+      $('.shopround').removeClass('aos-init');
+      $('.shopround').removeClass('aos-animate');
+        console.log('else');
+    }
+});
+  AOS.init({
+  duration: 1000
+});
+</script>

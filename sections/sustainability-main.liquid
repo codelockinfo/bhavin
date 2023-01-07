@@ -1,0 +1,272 @@
+<div class="main-sustainability-cls" id="{{ section.id }}">
+  <div class="sustainability">
+    <div class="sustainability-flex">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'restore' %}
+        <div class="Restoration-cls-main cls-sub-cls">
+          <header class="restor-cls Substain-head">
+            <h2 class="heading">{{ block.settings.heading }}</h2>
+            <p class="text">{{ block.settings.text }} </p>
+            <p class="text-cls">{{ block.settings.text-other }} </p>
+          </header>
+          <div class="First-Restoration">
+            <img src="{{ block.settings.image1 | img_url: 'master' }}">
+            <div class="cnt-restore">
+              <h2 class="title">{{ block.settings.title1 }}</h2>
+              <p class="text">{{ block.settings.text1 }}</p>
+            </div>
+          </div>
+          <div class="First-Restoration">
+            <img src="{{ block.settings.image2 | img_url: 'master' }}">
+            <div class="cnt-restore">
+              <h2 class="title">{{ block.settings.title2 }}</h2>
+              <p class="text">{{ block.settings.text2 }}</p>
+            </div>
+          </div>
+          <div class="First-Restoration">
+            <img src="{{ block.settings.image3 | img_url: 'master' }}">
+            <div class="cnt-restore">
+              <h2 class="title">{{ block.settings.title3 }}</h2>
+              <p class="text">{{ block.settings.text3 }}</p>
+            </div>
+          </div>
+        </div>
+         {% when 'footprint' %}
+          <div class="footprint-cls-main cls-sub-cls">
+            <header class="footprint-cls Substain-head">
+              <h2 class="heading">{{ block.settings.heading }}</h2>
+              <p class="text">{{ block.settings.text }} </p>
+              <p class="text-cls">{{ block.settings.text-other }} </p>
+            </header>
+          {% if block.settings.image != blank %}
+          <div class="First-foot-print">
+            <img src="{{ block.settings.image | img_url: 'master' }}">
+          </div>
+            {% endif %}
+          </div>
+        {%  endcase %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Sustainability Section",
+    "max_blocks" : 2,
+    "settings": [
+       {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#F2ECE8"
+      }
+    ],
+    "blocks":[
+      {
+        "name" : "restore",
+        "type" : "restore",
+        "settings" : [
+          {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Text"
+      },
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "text-other",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+          {
+            "id" : "image1",
+            "type" : "image_picker",
+            "label" : "Image"
+          },
+          {
+            "id" : "title1",
+            "type" : "text",
+            "label" : "Heading"
+          },
+          {
+            "id" : "text1",
+            "type" : "textarea",
+            "label" : "Text"
+          },
+          {
+            "id" : "image2",
+            "type" : "image_picker",
+            "label" : "Image"
+          },
+          {
+            "id" : "title2",
+            "type" : "text",
+            "label" : "Heading"
+          },
+          {
+            "id" : "text2",
+            "type" : "textarea",
+            "label" : "Text"
+          },
+          {
+            "id" : "image3",
+            "type" : "image_picker",
+            "label" : "Image"
+          },
+          {
+            "id" : "title3",
+            "type" : "text",
+            "label" : "Heading"
+          },
+          {
+            "id" : "text3",
+            "type" : "textarea",
+            "label" : "Text"
+          }
+        ]
+      },
+      {
+        "name" : "footprint",
+        "type" : "footprint",
+        "settings" : [
+          {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Text"
+      },
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "text-other",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+          {
+            "id" : "image",
+            "type" : "image_picker",
+            "label" : "Image"
+          }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Sustainability Section"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+  .main-sustainability-cls {
+    padding: 0 5%;
+    background: {{ section.settings.bg-color }};
+}
+  .sustainability {
+    padding:5% 0;
+    border-bottom: 1px solid #C685FF;
+    max-width: 1900px;
+    width: 100%;
+    margin: auto;
+}
+  .footprint-cls-main{
+    margin-bottom: 5rem;
+  }
+  .Substain-head p.text-cls {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 68px;
+    text-align: center;
+    color: #42494E;
+}
+  .Restoration-cls-main .First-Restoration {
+    margin: 5% 0;
+}
+  .cnt-restore {
+    margin-top: 15px;
+}
+  .Substain-head h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 25px;
+    text-align: center;
+    color: #293238;
+    margin-bottom: 1rem;
+}
+  .Substain-head p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    color: #42494E;
+    max-width: 600px;
+    padding: 15px 0;
+    margin: auto;
+}
+  .Substain-head p.text-cls {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 15px;
+    line-height: 20px;
+    text-align: center;
+    color: #42494E;
+    max-width: 600px;
+    margin: auto;
+}
+  
+  .sustainability-flex {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+}
+  .cls-sub-cls {
+    width: 48%;
+}
+    .cnt-restore h2.title {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 15px;
+    line-height: 20px;
+    color: #293238;
+    margin: 0;
+}
+  .cnt-restore p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 15px;
+    line-height: 20px;
+    color: #293238;
+}
+  @media(max-width:768px){
+    .cls-sub-cls {
+    width: 100%;
+      margin-top: 5rem;
+}
+    .Substain-head h2.heading {
+    font-size: 18px;
+    line-height: 20px;
+}
+    
+  }
+  
+</style>

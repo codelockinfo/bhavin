@@ -1,0 +1,191 @@
+<div class="main-not-fix-section" id="{{ section.id }}">
+  <div class="not-fixed">
+    <header class="fixed">
+      <h2 class="heading">{{ section.settings.heading }}</h2>
+      <p class="text">{{ section.settings.text }}</p>
+    </header>
+    <div class="flex-fixed">
+       <div class="fixed-image first-not-fixed">
+         <img src="https://cdn.shopify.com/s/files/1/0613/4628/3679/files/Group_1130.png?v=1662197704">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'right' %}
+        {% if block.settings.text != blank  %}
+          <p class="text">{{ block.settings.text }}</p>
+        {% endif %}
+        {% endcase %}
+      {% endfor %}
+      </div>
+      <div class="fixed-image second-not-fixed">
+        <img src="https://cdn.shopify.com/s/files/1/0613/4628/3679/files/Group_1130_1.png?v=1662197704">
+      {% for block in section.blocks %}
+        {% case block.type %}
+          {% when 'left' %}
+        {% if block.settings.text != blank  %}
+          <p class="text">{{ block.settings.text }}</p>
+        {% endif %}
+        {% endcase %}
+      {% endfor %}
+      </div>
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Not Fix Section",
+    "settings": [
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Heading"
+      },
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#fff"
+      }
+    ],
+    "blocks" : [
+      {
+        "name" : "right",
+        "type" : "right",
+        "settings" : [
+          {
+            "id" : "text",
+            "type" : "textarea",
+            "label" : "Text"
+          }
+        ]
+      },
+      {
+        "name" : "left",
+        "type" : "left",
+        "settings" : [
+          {
+            "id" : "text",
+            "type" : "textarea",
+            "label" : "Text"
+          }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Not Fix Section"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+  #{{ section.id }}{
+    background: {{section.settings.bg-color}};
+    padding: 5%;
+}
+  .not-fixed {
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+}
+  header.fixed {
+    width: 100%;
+    max-width: 540px;
+    margin: auto;
+}
+.fixed-image {
+    width: 40%;
+    margin: 5% 0;
+    padding: 5% 0;
+}
+  .first-not-fixed{
+    background: #F8F0FE;
+    border-radius: 10px;
+    border: 1px solid #C685FF;
+    color: #C685FF;
+  }
+  .second-not-fixed{
+    border: 1px solid #F24E1E;
+    border-radius: 10px;
+    background: #fdded5;
+    color: #F24E1E;
+  }
+  .flex-fixed {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+    text-align: center;
+    max-width: 700px;
+    margin: auto;
+}
+  .fixed-image img {
+    max-width: 30px;
+    width: 100%;
+    margin: 5% 0;
+}
+  .fixed h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 40px;
+    text-align: center;
+    letter-spacing: -0.03em;
+    color: #C685FF;
+}
+  .fixed p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    text-align: center;
+    color: #C685FF;
+}
+  .fixed-image p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 30px;
+    margin: 0;
+}
+
+  @media(max-width: 768px){
+    .fixed h2.heading {
+    font-size: 25px;
+    line-height: 30px;
+}
+  .fixed p.text {
+    font-size: 15px;
+    line-height: 22px;
+}
+  .fixed-image p.text {
+    font-size: 15px;
+    line-height: 27px;
+}
+  }
+  @media(max-width:600px){
+    .fixed-image{
+    width: 100%;
+      max-width: 300px;
+  }
+    .flex-fixed{
+      justify-content: center;
+    }
+  }
+  @media (max-width: 540px){
+.fixed-image {
+    width: 100%;
+    max-width: 250px;
+}
+  }
+</style>

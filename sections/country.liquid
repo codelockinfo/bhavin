@@ -1,0 +1,178 @@
+<div class="Main-country-section" id="{{ section.id }}">
+  <div class="Country-Sections">
+    {% if section.settings.heading != blank %}
+      <header class="country-head">
+        <h2 class="heading">{{ section.settings.heading }}</h2>
+        <p class="text">{{ section.settings.text }}</p>
+      </header>
+    {% endif %}
+    <div class="Flex-Country">
+      {% for block in section.blocks %}
+        <div class="main-first-country">
+          <h2 class="heading">{{ block.settings.heading }}</h2>
+          <p class="text">{{ block.settings.text }}</p>
+          {% if block.settings.web != blank %}
+            <a class="cls-hover-cls" href="{{ block.settings.web-link }}">{{ block.settings.web }}</a>
+          {% endif %}
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Country Section",
+    "settings": [
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Heading"
+      },
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#E5E5E5"
+      }
+    ],
+    "blocks" : [
+      {
+        "name" : "block",
+        "type" : "block",
+        "settings" : [
+          {
+            "id" : "heading",
+            "type" : "text",
+            "label" : "Country Name"
+          },
+          {
+            "id" : "text",
+            "type" : "textarea",
+            "label" : "Text"
+          },
+          {
+            "id" : "web",
+            "type" : "text",
+            "label" : "Custom Field",
+            "default" : "Website ↗"
+          },
+          {
+            "id" : "web-link",
+            "type" : "url",
+            "label" : "Website Link"
+          }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Country Section"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+  .Main-country-section{
+    background: {{section.settings.bg-color}};
+    padding: 5%;
+  }
+  .Country-Sections{
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+  }
+  .Flex-Country{
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+    justify-content: space-between;
+  }
+  .main-first-country{
+    width:33.33%;
+    padding: 5%;
+  }
+  .country-head h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 45px;
+    text-align: center;
+    letter-spacing: -0.03em;
+    color: #C494F8;
+}
+  .country-head p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    color: #C494F8;
+}
+  .main-first-country h2.heading {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 18px;
+    line-height: 25px;
+    color: #42494E;
+    margin: 0;
+}
+  .main-first-country p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    color: #42494E;
+    margin: 0;
+}
+  .main-first-country a {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 18px;
+    line-height: 25px;
+    text-decoration-line: underline;
+    color: #42494E;
+}
+
+  @media(max-width:768px){
+    .country-head h2.heading {
+    font-size: 25px;
+    line-height: 35px;
+}
+  .country-head p.text {
+    font-size: 18px;
+    line-height: 24px;
+}
+    .main-first-country h2.heading {
+    font-size: 15px;
+    line-height: 22px;
+}
+  .main-first-country p.text {
+    font-size: 15px;
+    line-height: 22px;
+}
+  .main-first-country a {
+    font-size: 15px;
+    line-height: 22px;
+}
+  }
+
+  @media(max-width:600px){
+    .main-first-country{
+    width:50%;
+  }
+  }
+  
+</style>

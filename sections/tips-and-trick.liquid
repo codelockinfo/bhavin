@@ -1,0 +1,196 @@
+<div class="Main-Trick-Section" id="{{ section.id }}">
+<div class="Trick-Sections">
+<header class="trick-head">
+  <h2 class="heading">{{ section.settings.heading }}</h2>
+  <p class="text">{{ section.settings.text }}</p>
+</header>
+<div class="flex-all-block">
+ <div class="blocks-main-text">
+    <h2 class="title">{{ section.settings.title1 }}</h2>
+     {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'What-not-to-do' %}
+        <div class="fll-line">
+         <li></li> <p class="tlt">{{ block.settings.text }}</p>
+        </div>
+      {% endcase %}
+    {% endfor %}
+</div>
+  <div class="blocks-main-text">
+    <h2 class="title">{{ section.settings.title2 }}</h2>
+     {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'Trouble-Shooting' %}
+          <div class="fll-line">
+         <li></li> <p class="tlt">{{ block.settings.text }}</p>
+        </div>
+      {% endcase %}
+    {% endfor %}
+</div>
+  <div class="blocks-main-text">
+    <h2 class="title">{{ section.settings.title3 }}</h2>
+     {% for block in section.blocks %}
+      {% case block.type %}
+        {% when 'Tips-Tricks' %}
+          <div class="fll-line">
+         <li></li> <p class="tlt">{{ block.settings.text }}</p>
+        </div>
+      {% endcase %}
+    {% endfor %}
+</div>
+</div>
+</div>
+</div>
+
+{% schema %}
+{
+"name": "Trip And Trick Section",
+"settings": [
+  {
+    "id" : "heading",
+    "type" : "text",
+    "label" : "Heading"
+  },
+  {
+    "id" : "text",
+    "type" : "textarea",
+    "label" : "Text"
+  },
+  {
+    "id" : "title1",
+    "type" : "text",
+    "label" : "Title1"
+  },
+  {
+    "id" : "title2",
+    "type" : "text",
+    "label" : "Title2"
+  },
+  {
+    "id" : "title3",
+    "type" : "text",
+    "label" : "Title3"
+  },
+  {
+    "id" : "bg-color",
+    "type" : "color",
+    "label" : "Background Color",
+    "default" : "#F8F0FE"
+  }
+],
+"blocks" : [
+  {
+    "name" : "What-not-to-do",
+    "type" : "What-not-to-do",
+    "settings" : [
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      }
+    ]
+  },
+  {
+    "name" : "Trouble-Shooting",
+    "type" : "Trouble-Shooting",
+    "settings" : [
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      }
+    ]
+  },
+  {
+    "name" : "Tips-Tricks",
+    "type" : "Tips-Tricks",
+    "settings" : [
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      }
+    ]
+  }
+],
+"presets" : [
+  {
+    "name" : "Trip And Trick Section"
+  }
+]
+}
+{% endschema %}
+
+<style>
+
+.Main-Trick-Section{
+  background: {{section.settings.bg-color}};
+}
+.Trick-Sections{
+  max-width: 1900px;
+  width: 100%;
+  margin: auto;
+  padding: 5%;
+}
+.flex-all-block{
+  display: flex;
+  flex-wrap: wrap;
+  width: 100%;
+  justify-content: space-between;
+}
+.blocks-main-text{
+  width: 30%;
+}
+.fll-line {
+  display: flex;
+  width: 100%;
+  margin: 5px 0;
+}
+.trick-head h2.heading {
+  font-family: 'Gazpacho';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 35px;
+  line-height: 40px;
+  letter-spacing: -0.03em;
+  font-feature-settings: 'pnum' on, 'lnum' on;
+  color: #C685FF;
+}
+.trick-head p.text {
+  font-family: 'TT Norms Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 27px;
+  color: #C685FF;
+}
+.blocks-main-text h2.title {
+  font-family: 'TT Norms Pro';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 15px;
+  line-height: 20px;
+  color: #C685FF;
+}
+.blocks-main-text .tlt {
+  font-family: 'TT Norms Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 15px;
+  line-height: 20px;
+  color: #C685FF;
+}
+@media(max-width:768px){
+  .blocks-main-text{
+  width: 100%;
+}
+  .trick-head h2.heading {
+  font-size: 25px;
+  line-height: 30px;
+}
+.trick-head p.text {
+  font-size: 18px;
+  line-height: 24px;
+}
+}
+</style>

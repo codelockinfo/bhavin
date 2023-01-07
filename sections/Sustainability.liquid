@@ -1,0 +1,91 @@
+<div class="sustaincontain">
+    <div class="sustaintable">
+        <div class="sustain_flex">
+            <div class="sustain_flex1">
+              {% if section.settings.bioimg != blank %}
+                  <div class="stable1 mobdisnone">
+                    <img src="{{section.settings.bioimg | img_url:'master'}}" class="komimage">
+                </div>
+              {% endif %}
+              {% if section.settings.bioimg2 != blank  %}
+                <div class="stable1 bioromb">
+                    <img src="{{section.settings.bioimg2 | img_url:'master'}}" class="komimage">
+                </div>
+                {% else  %}
+                    <div class="stable1 bioromb2">
+                    <img src="{{section.settings.bioimg | img_url:'master'}}" class="komimage">
+                </div>
+                {% endif %}
+            </div>
+            <div class="sustain_flex2">
+                <div class="stable2">
+                    <h2 class="biotitle">{{section.settings.komtitle}}</h2>
+                    <p class="biopar">{{section.settings.kompar}}</p>
+                    <p class="subtn cls-hover-cls"><a href="{{section.settings.komurl}}">{{section.settings.kombtn}}</a></p>
+                </div>
+            </div>
+        </div>
+
+    </div>
+</div>
+
+
+{% schema %}
+{
+"name": "Sustainability",
+
+"settings": [
+{
+    "id" : "komtitle",
+    "type" : "text",
+    "label" : "Heading"
+  },
+  {
+      "id" : "kompar",
+      "type" : "textarea",
+      "label" : "Discription"
+    },
+    {
+      "id" : "kombtn",
+      "type" : "text",
+      "label" : "btn title"
+    },
+    {
+      "id" : "komurl",
+      "type" : "url",
+      "label" : "btn url"
+    },
+  {
+      "id": "bioimg",
+      "type": "image_picker",
+       "label": "Banner Image"
+      },
+    {
+      "id": "bioimg2",
+      "type": "image_picker",
+       "label": "Banner Image"
+      }
+],
+"blocks":[
+{
+"type" : "block",
+"name" : "block",
+"settings" : [
+    {
+ "id": "kom_clape2",
+ "type": "image_picker",
+  "label": "Banner Image"
+ }
+]
+}
+
+],
+"presets" : [
+{
+  "name" : "Sustainability",
+  "category" : "Sustainability"
+
+  }
+]
+}
+{% endschema %}

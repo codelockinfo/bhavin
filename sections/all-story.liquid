@@ -1,0 +1,180 @@
+<div class=" Main-all-section" id="{{ section.id }}">
+<div class="clsstory main-heading-sections">
+  <div class="position-image-section">
+    <div class="header-sections">
+      <h2 class="heading">{{ section.settings.heading }}</h2>
+    </div>
+    <div class="img-with-text">
+      <p class="text">{{ section.settings.text }}</p>
+      <p class="text">{{ section.settings.text2 }}</p>
+      
+    </div>
+  </div>
+  <div class="img-section shopround">
+    <a href="{{ section.settings.image-link }}">
+      <img  src="{{ section.settings.image | img_url: 'master' }}" class="shopimg rotate" id="js-logo">
+    </a>
+  </div>
+</div>
+
+</div>
+
+{% schema %}
+{
+  "name": "All Story Section",
+  "settings": [
+    {
+      "id" : "image",
+      "type" : "image_picker",
+      "label" : "Image"
+    },
+    {
+        "id" : "image-link",
+        "type" : "url",
+        "label" : "Image Link"
+      },
+    {
+      "id" : "heading",
+      "type" : "text",
+      "label" : "Heading"
+    },
+    {
+      "id" : "text",
+      "type" : "textarea",
+      "label" : "Text"
+    },
+    {
+      "id" : "text2",
+      "type" : "textarea",
+      "label" : "Text"
+    },
+    {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#fff"
+      }
+  ],
+  "presets" : [
+    {
+      "name" : "All Story Section"
+    }
+  ]
+}
+{% endschema %}
+
+<style>
+
+.main-heading-sections{
+  max-width:834px;
+  width:100%;
+  margin: auto;
+  display: flex;
+  align-items: end;
+}
+.Main-all-section {
+  padding: 5rem 2rem;
+  background: {{ section.settings.bg-color }};
+}
+.img-section {
+     position: fixed;
+    right: 9%;
+    top: 12%;
+    z-index: 2;
+}
+.img-section img {
+ width: 100%;
+  height: 100%;
+  max-width: 120px;
+}
+  .img-with-text {
+    margin-top: 3rem;
+}
+.header-sections h2.heading {
+  font-family: 'Gazpacho';
+  font-style: normal;
+  font-weight: 700;
+  font-size: 45px;
+  line-height: 50px;
+  text-align: center;
+  letter-spacing: -0.03em;
+   color: #C685FF;
+      width: 91%;
+      margin: 0 auto;
+}
+
+  .clsstory.main-heading-sections {
+    position: relative;
+}
+  
+.img-with-text p.text {
+  font-family: 'TT Norms Pro';
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 30px;
+  text-align: center;
+  color: #C685FF;
+}
+ 
+@media(max-width:768px){
+  .main-heading-sections{
+  align-items: center;
+}
+  .img-section img {
+  max-height: 100px;
+}
+  .Main-all-section {
+    padding: 5rem 2rem 2rem;
+}
+  .header-sections h2.heading {
+  font-size: 38px;
+    line-height: 42px;
+}
+  .img-with-text p.text {
+  font-size: 18px;
+  line-height: 24px;
+}
+  .header-sections h2.heading{
+    width: 100%;                            
+  }
+}
+    .shopround.Active{
+    top: unset;
+    display: block;
+    position: fixed;
+    bottom: 95px;
+    right: 3%;
+    text-align: end;
+    opacity: 1;
+    z-index: 999;
+  }
+  @media(max-width:540px){
+  .header-sections h2.heading {
+  font-size: 30px;
+    line-height: 35px;
+}
+  }
+</style>
+
+
+<link rel="stylesheet" href="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.css">
+<script src="https://cdn.rawgit.com/michalsnik/aos/2.0.4/dist/aos.js"></script>
+<script src="https://code.jquery.com/jquery-3.6.1.min.js" integrity="sha256-o88AwQnZB+VDvE9tvIXrMQaPlFFSUTR+nldQm1LuPXQ=" crossorigin="anonymous"></script>
+<script>
+  $(window).scroll(function(){
+  
+    if ($(this).scrollTop() > 500) {
+       $('.shopround').addClass('Active');
+      $('.shopround').attr('data-aos','fade-up');
+    } else {
+       $('.shopround').removeClass('Active');
+      $('.shopround').attr('data-aos','');
+      $('.shopround').removeClass('aos-init');
+      $('.shopround').removeClass('aos-animate');
+    }
+});
+  AOS.init({
+  duration: 800
+});
+</script>

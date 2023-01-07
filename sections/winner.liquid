@@ -1,0 +1,91 @@
+<div class=" main-winnners">
+  <div class="winnercontain">
+    <div class="backblue">
+        <div class="winnerimg">
+            <img src="{{section.settings.kome| img_url:'master'}}" class="komwinns">
+
+        </div>
+      
+    </div>
+
+</div>
+<div class="shopmg shopround">
+  <a href="{{ section.settings.image-link }}">
+      <img src="{{section.settings.shop  | img_url: 'master'}}" class="shonow rotate linear infinite shopimg" id="js-logo">
+  </a>
+</div>
+</div>
+
+{% schema %}
+{
+"name": "winner",
+
+"settings": [
+{
+    "id": "kome",
+    "type": "image_picker",
+     "label": "Banner Image"
+    },
+  {
+    "id": "shop",
+    "type": "image_picker",
+     "label": "Side Image"
+    },
+  {
+        "id" : "image-link",
+        "type" : "url",
+        "label" : "Image Link"
+      }
+],
+
+"presets" : [
+{
+  "name" : "winner",
+  "category" : "winner"
+
+  }
+]
+}
+{% endschema %}
+
+<style>
+  .backblue {
+    background-color: #004df5;
+    padding: 5rem;
+}
+  
+  .shopmg img.shonow {
+    max-width: 120px;
+    width: 100%;
+}
+  .shopmg {
+    right: 5%;
+    position: absolute;
+    margin-top: -60px;
+}
+  .winnercontain {
+    width: 100%;
+}
+
+  @media(max-width:768px){
+    .main-winnners {
+    display: flex;
+    flex-wrap: wrap;
+    width: 100%;
+}
+    .shopmg img.shonow {
+    max-width: 130px;
+}
+    .shopmg {
+    margin-top: -65px;
+}
+  }
+  @media(max-width: 500px){
+    .shopmg img.shonow {
+    max-width: 100px;
+}
+    .shopmg {
+    margin-top: -50px;
+}
+  }
+</style>

@@ -1,0 +1,194 @@
+<div class="Restoration-Main" id="{{ section.id }}">
+  <div class="Section-container-Restor">
+    <header class="restor">
+      <h2 class="heading">{{ section.settings.heading }}</h2>
+      <p class="text">{{ section.settings.text }} </p>
+      <p class="text-cls">{{ section.settings.text2 }} </p>
+    </header>
+    <div class="main-block-restore">
+      {% for block in section.blocks %}
+        <div class="First-Restoration">
+        {% if block.settings.image != blank %}
+          <img src="{{ block.settings.image | img_url: 'master' }}">
+          {% endif %}
+          <div class="cnt-restore">
+            <h2 class="title">{{ block.settings.title }}</h2>
+            <p class="text">{{ block.settings.text }}</p>
+          </div>
+        </div>
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+{% schema %}
+  {
+    "name": "Restoration Section",
+    "settings": [
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Text"
+      },
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "text2",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#F2ECE8"
+      }
+    ],
+    "blocks" : [
+      {
+        "name" : "block",
+        "type" : "block",
+        "settings" : [
+          {
+            "id" : "image",
+            "type" : "image_picker",
+            "label" : "Image"
+          },
+          {
+            "id" : "title",
+            "type" : "text",
+            "label" : "Heading"
+          },
+          {
+            "id" : "text",
+            "type" : "textarea",
+            "label" : "Text"
+          }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Restoration Section"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+
+  .Restoration-Main{
+/*     background: #F2ECE8; */
+    background: {{ section.settings.bg-color }};
+    padding: 5rem 2rem;
+  }
+  .Section-container-Restor{
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    border-bottom: 1px solid #C685FF;
+  }
+  .restor h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 43px;
+    text-align: center;
+    color: #293238;
+    margin: 0;
+}
+  .restor p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 24px;
+    line-height: 30px;
+    text-align: center;
+    color: #42494E;
+    max-width: 600px;
+    margin: auto;
+}
+  .First-Restoration {
+    margin: 5% 0;
+}
+  .First-Restoration img {
+    width: 100%;
+    margin: 3% 0;
+}
+  .restor p.text-cls {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 68px;
+    text-align: center;
+    color: #42494E;
+}
+  .cnt-restore h2.title {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 24px;
+    line-height: 34px;
+    color: #293238;
+    margin: 0;
+}
+  .cnt-restore p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 400;
+    font-size: 24px;
+    line-height: 34px;
+    color: #293238;
+}
+
+  @media(max-width:768px){
+    .cnt-restore h2.title {
+    font-size: 20px;
+    line-height: 30px;
+}
+  .cnt-restore p.text {
+    font-size: 20px;
+    line-height: 30px;
+}
+    .restor p.text {
+    font-size: 20px;
+    line-height: 26px;
+}
+    .restor p.text-cls {
+    font-size: 16px;
+    line-height: 64px;
+}
+    .restor h2.heading {
+    font-size: 30px;
+    line-height: 38px;
+}
+  }
+  @media(max-width:414px){
+    .cnt-restore h2.title {
+    font-size: 14px;
+    line-height: 24px;
+}
+  .cnt-restore p.text {
+    font-size: 14px;
+    line-height: 24px;
+}
+    .restor p.text {
+    font-size: 14px;
+    line-height: 20px;
+}
+    .restor p.text-cls {
+    font-size: 12px;
+    line-height: 60px;
+}
+    .restor h2.heading {
+    font-size: 20px;
+    line-height: 28px;
+}
+  }
+</style>

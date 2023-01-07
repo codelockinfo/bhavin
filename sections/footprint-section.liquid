@@ -1,0 +1,146 @@
+<div class="Footprint-Main" id="{{ section.id }}">
+  <div class="Section-container-print">
+    <header class="footprint">
+      <h2 class="heading">{{ section.settings.heading }}</h2>
+      <p class="text">{{ section.settings.text }} </p>
+      <p class="text-cls">{{ section.settings.text2 }} </p>
+    </header>
+    <div class="main-block-print">
+      {% for block in section.blocks %}
+        {% if block.settings.image != blank %}
+        <div class="First-foot-print">
+          <img src="{{ block.settings.image | img_url: 'master' }}">
+        </div>
+          {% endif %}
+      {% endfor %}
+    </div>
+  </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "Footprint Section",
+    "max_blocks" : 1,
+    "settings": [
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Text"
+      },
+      {
+        "id" : "text",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "text2",
+        "type" : "textarea",
+        "label" : "Text"
+      },
+      {
+        "id" : "bg-color",
+        "type" : "color",
+        "label" : "Background Color",
+        "default" : "#F2ECE8"
+      }
+    ],
+    "blocks" : [
+      {
+        "name" : "block",
+        "type" : "block",
+        "settings" : [
+          {
+            "id" : "image",
+            "type" : "image_picker",
+            "label" : "Image"
+          }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "Footprint Section"
+      }
+    ]
+  }
+{% endschema %}
+
+<style>
+
+
+  .Footprint-Main{
+    background: {{ section.settings.bg-color }};
+    padding: 0rem 2rem;
+  }
+  .Section-container-print{
+    max-width: 1200px;
+    width: 100%;
+    margin: auto;
+    border-bottom: 1px solid #C685FF;
+  }
+  .First-foot-print img {
+    width: 100%;
+    margin: 3% 0% 5%;
+}
+  .footprint h2.heading {
+    font-family: 'Gazpacho';
+    font-style: normal;
+    font-weight: 700;
+    font-size: 35px;
+    line-height: 43px;
+    text-align: center;
+    color: #293238;
+    margin: 0;
+}
+  .footprint p.text {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 25px;
+    line-height: 30px;
+    text-align: center;
+    color: #42494E;
+    max-width: 600px;
+    margin: auto;
+}
+  .footprint p.text-cls {
+    font-family: 'TT Norms Pro';
+    font-style: normal;
+    font-weight: 500;
+    font-size: 20px;
+    line-height: 68px;
+    text-align: center;
+    color: #42494E;
+}
+
+   @media(max-width:768px){
+    .footprint p.text {
+    font-size: 20px;
+    line-height: 26px;
+}
+    .footprint p.text-cls {
+    font-size: 16px;
+    line-height: 64px;
+}
+    .footprint h2.heading {
+    font-size: 30px;
+    line-height: 38px;
+}
+  }
+   @media(max-width:414px){
+    .footprint p.text {
+    font-size: 14px;
+    line-height: 20px;
+}
+    .footprint p.text-cls {
+    font-size: 12px;
+    line-height: 60px;
+}
+    .footprint h2.heading {
+    font-size: 20px;
+    line-height: 28px;
+}
+  }
+  
+</style>

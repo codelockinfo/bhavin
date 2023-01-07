@@ -1,0 +1,65 @@
+<div class="biology">
+    <div class="biologycontain">
+        <h2 class="biotitle toglecenter">{{ section.settings.heading }}</h2>
+    </div>
+
+    <div class="biocontain mulplog">
+        {% for block in section.blocks %}
+        <div class="boilogy_flex ">
+            <div class="boilogy_flex1">
+              <div class="biologoscnd">
+                {% if block.settings.bioimg!= blank %}
+                <img src="{{block.settings.bioimg | img_url:'master'}}" class="pboimage">
+                {% endif %}
+              </div>
+            </div>
+          </div>
+        {% endfor %}
+        </div>
+    </div>
+</div>
+
+
+{% schema %}
+  {
+    "name": "biologo",
+    "settings": [
+      {
+        "id" : "heading",
+        "type" : "text",
+        "label" : "Heading"
+      }
+    ],
+    "blocks" : [
+      {
+        "name" : "block",
+        "type" : "block",
+        "settings" : [
+          {
+            "id" : "bioimg",
+            "type" : "image_picker",
+            "label" : "Image"
+          }
+        ]
+      }
+    ],
+    "presets" : [
+      {
+        "name" : "biologo"
+      }
+    ]
+  }
+{% endschema %}
+
+<script>
+  if ($(window).width() > 820){
+    $('.mulplog').slick({
+  infinite: false,
+  slidesToShow: 4.5,
+  slidesToScroll: 3,
+  dots: false,
+  arrows:false
+
+});
+  }
+</script>

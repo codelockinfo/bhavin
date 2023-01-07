@@ -1,0 +1,173 @@
+{% comment %} cls014 {% endcomment %}
+<style>
+  .d-flex-b{
+    display:flex;
+    flex-wrap: wrap;
+  }
+  .w-50-b{
+    width:50%;
+  }
+  .mar_auto_b{
+    margin: auto;a
+  }
+  .s-div{
+        position: relative;
+    background:#f8f0fe;
+  }
+  .center-div-b{
+        position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+  }
+  .clsinputtype{
+    width: 100%;
+    border: 1px solid;
+    border-radius: 20px;
+    padding: 10px 20px;
+    margin-top: 12px;
+  }
+  .center-div-b>h2{
+    font-family: 'Gazpacho';
+font-style: normal;
+font-weight: 700;
+font-size: 35px;
+line-height: 55px;
+  }
+  .f-div>img{
+    object-fit: cover;
+  }
+  .center-div-b>p{
+    font-family: 'TT Norms Pro';
+font-style: normal;
+font-weight: 400;
+font-size: 18px;
+line-height: 30px;
+  }
+  .btnlogin{
+        color: white;
+    width: 100%;
+    background: #BF7AFF;
+    padding: 10px;
+    border-radius: 30px;
+    font-weight: bold;
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+}
+  }
+  .btncreatediv a{
+        font-size: 15px;
+  }
+  .btncreatediv{
+     margin-top:20px;
+  }
+  .btnforgotpassword{
+    
+  }
+  .bac-color{
+        background: #f8f0fe;
+  }
+
+  .clsall{
+    position:relative;
+  }
+  .clsforgotpas{
+    position:absolute;
+    top: 62%;
+    right: -13%;
+    transform: translate(-50%, -50%);
+  }
+
+  @media only screen and (min-width: 320px) and (max-width: 767px) {
+
+   .w-50-b{
+    width: 100%;
+  }
+
+    .s-div{
+      display: flex;
+    margin: auto;
+    justify-content: center;
+    height: 450px;
+    width: 90%;
+    }
+    .center-div-b{
+    padding-top: 50px;
+      text-align:center;
+              position: unset;;
+    top: unset;
+    left: unset;
+   transform: translate(0px, 0px);
+    }
+}
+    @media only screen and (min-width: 768px) and (max-width: 1023px) {
+
+.center-div-b>h2{
+     font-size: 24px; 
+}
+      .center-div-b>p{
+        margin-bottom: 0;
+      }
+}
+      @media only screen and (min-width: 768px) and (max-width: 940px) {
+
+.center-div-b{
+     width: 250px; 
+}
+}
+</style>
+<section>
+  <div class="main_div-login-form">
+    <div class="d-flex-b bac-color">
+      <div class="w-50-b">
+        <div class="f-div">
+         <img src="{{ section.settings.left_side_image | img_url: 'master' }}">
+        </div>
+      </div>
+      <div class="w-50-b mar_auto_b">
+        <div class="s-div">
+          <div class="center-div-b">
+            <h2>Log In</h2>
+            <p>Please enter your e-mail and password:</p>
+        <form>
+        <input type="text" class="clsemail clsinputtype" placeholder="Email"
+          <div class="ms clsall">
+             <input type="text" class="clspassword clsinputtype" placeholder="Password">
+            <a href="#0" class="clsforgotpas">Forgot password?</a>
+          </div>
+          
+        <div>
+          <a class="btnlogin" href="#0">LOG IN</a>
+        </div>
+        <div class="btncreatediv">
+          <a class="btncreateacc" href="#0">Don’t have an account? Create one</a>
+        </div>
+        </form>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+{% schema %}
+{
+   "name":"Login form",
+   "settings":[
+             {
+        "id": "left_side_image",
+        "type": "image_picker",
+        "label": "Left Side Image"
+        }
+
+    
+   ],
+   "presets":[
+      {
+         "name":"Login form",
+         "category":"Text"      
+      }
+   ]
+}
+
+{% endschema %}

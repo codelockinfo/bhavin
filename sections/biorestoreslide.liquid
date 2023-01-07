@@ -1,0 +1,239 @@
+<div class="bioreslide">
+  <div class="biorxamp">
+    
+    <div class="bioreflex biorslides">
+      {% for block in section.blocks %}
+        <div class="biorflex1">
+          
+          <div class="biorecontain bioredesktop">
+            <img src="{{ block.settings.biormg | img_url:'master' }}" class="bioremg">
+          </div>
+
+            <div class="biorecontain biormobile">
+            <img src="{{ block.settings.biormobile | img_url:'master' }}" class="bioremg">
+          </div>
+          <div class="biorabslute">
+            <h2 class="hamtitle">{{ block.settings.kotitle }}</h2>
+            <p class="hampdisc">{{ block.settings.kodisc }} </p>
+            <p class="kombutton"><a href="{{ block.settings.komurl }}">{{ block.settings.komg }}</a></p>
+          </div>
+
+   
+        </div>
+      {% endfor %}
+    </div>
+             {% if section.settings.right-image != blank %}
+  <div class="custom-slide-image">
+    <a href="{{ section.settings.right-image-link }}">
+      <img src="{{ section.settings.right-image | img_url: 'master' }}">
+    </a>
+  </div>
+    {% endif %}
+  </div>
+</div>
+<style>
+  .bioremg {
+    width: 100%;
+}
+  .biorflex1, .biorxamp {
+    position: relative;
+}
+  .biorabslute {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+}
+  .hamtitle{
+    font-size: 45px;
+    line-height: 50px;
+    letter-spacing: 2px;
+    font-family: 'Gazpacho';
+    text-transform: initial;
+    margin-top: 7%;
+        text-align: center;
+    color: #fff;
+  }
+  .bioredesktop{
+    display:block
+  }
+  .biormobile{
+    display:none
+  }
+  .hampdisc{
+        font-size: 24px;
+    letter-spacing: 1px;
+    text-transform: inherit;
+    line-height: 30px;
+    text-align: center;
+    font-family: TT Norms Pro;
+        color: #fff;
+  }
+  .kombutton a {
+    font-size: 15px;
+    letter-spacing: 0px;
+    text-transform: inherit;
+    line-height: 20px;
+    text-align: center;
+    font-family: 'TTNormsProbold';
+    font-weight: bold;
+    color: #ffffff;
+    border-color: #c382ff;
+    background-color: #c382ff;
+    text-align: center;
+    padding: 14px 28px;
+    border-radius: 25px;
+}
+  .kombutton {
+    text-align: center;
+}
+ .bioreflex  .slick-dots li button:before, .bioreflex  .slick-dots li a:before{
+       color: transparent;
+    border-radius: 20px;
+    border: 2px solid #fff;
+   width: unset;
+    height: unset;
+       line-height: 11px;
+   font-size: 32px;
+       font-family: fantasy;
+  }
+ .bioreflex .slick-dots li.slick-active button:before{
+    color: #fff;
+  }
+  .bioreflex.slick-dotted.slick-slider{
+        margin-bottom: 0px;
+  }
+  .bioreflex .slick-dots{
+        text-align: end;
+       margin-top: -45px;
+    padding-right: 4%;
+  }
+  .kombutton {
+    margin-top: 50px;
+}
+   @media(max-width:900px){
+     .bioremg{
+           height: 68vh;
+     }
+    .biorabslute{
+              width: 98%;
+          margin: 0 auto;
+        }
+   }
+      @media(max-width:768px){
+.bioremg{
+      height: 75vh;
+}
+        .bioredesktop{
+          display:none
+        }
+        .biormobile{
+          display:block;
+        }
+    
+      }
+     @media(max-width:540px){
+.bioremg {
+    height: 62vh;
+}
+      }
+      @media(max-width:414px){
+
+        .hamtitle{
+          font-size: 40px;
+    line-height: 45px;
+          margin: 10px 0px;
+        }
+      .hampdisc {
+    font-size: 22px;        
+    line-height: 25px;
+      }
+      }
+    @media(max-width:375px){
+      .bioremg {
+    height: 78vh;
+}
+      
+      .hampdisc {
+    font-size: 20px;
+    line-height: 23px;
+}
+      .custom-slide-image {
+    bottom: 0%;
+      }
+    }
+   @media(max-width:350px){
+.bioremg {
+    height: 67vh;
+}
+     .biorabslute{
+            top: 50%;
+              }
+     
+   }
+  
+</style>
+{% schema %}
+  {
+  "name": "biorestoreslide",
+
+  "settings": [
+   {
+      "id" : "right-image",
+      "type" : "image_picker",
+      "label" : "Image"
+    },
+    {
+      "id" : "right-image-link",
+      "type" : "url",
+      "label" : "Image Link"
+    }
+  ],
+  "blocks":[
+  {
+  "type" : "block",
+  "name" : "block",
+  "settings" : [
+      {
+   "id": "biormg",
+   "type": "image_picker",
+    "label": "Banner Image"
+   },
+        {
+   "id": "biormobile",
+   "type": "image_picker",
+    "label": "Banner Image"
+   },
+      {
+    "id" : "kotitle",
+    "type" : "text",
+    "label" : "Title"
+  },
+  {
+    "id" : "kodisc",
+    "type" : "textarea",
+    "label" : "Discription"
+  },
+    {
+    "id" : "komg",
+    "type" : "text",
+    "label" : "Button"
+  },
+  {
+    "id" : "komurl",
+    "type" : "url",
+    "label" : "Button Url"
+  }   
+  ]
+  }
+
+  ],
+  "presets" : [
+  {
+    "name" : "biorestoreslide",
+    "category" : "biorestoreslide"
+
+    }
+  ]
+  }
+  {% endschema %}

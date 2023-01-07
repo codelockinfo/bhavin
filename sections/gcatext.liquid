@@ -1,0 +1,43 @@
+<div class="gcatextile">
+    <div class="loremcontain">
+        <div class="loremtext">
+            {% for block in section.blocks %}
+                <div class="loremperagraph">
+                    <p class="komdiscription">{{block.settings.komtitle}}</p>
+                </div>
+            {% endfor %}
+            
+        </div>
+
+    </div>
+
+</div>
+
+{% schema %}
+{
+"name": "gcatext",
+
+"settings": [],
+"blocks":[
+{
+"type" : "block",
+"name" : "block",
+"settings" : [
+{
+    "id" : "komtitle",
+    "type" : "textarea",
+    "label" : "Discription"
+  }
+]
+}
+
+],
+"presets" : [
+{
+  "name" : "gcatext",
+  "category" : "gcatext"
+
+  }
+]
+}
+{% endschema %}

@@ -1,0 +1,150 @@
+<div class="bioreproduct">
+    <div class="biorcustom">
+        <div class="backgroundbiore" >
+          <img src="{{section.settings.backome | img_url:'master' }}">
+          <div class="biorewash">
+            <div class="biorcont">
+         <h2 class="biotitle">{{section.settings.komtitle}}</h2>
+                <p class="biopar">{{section.settings.kompar}}</p>
+                <p class="subtn cls-hover-cls"><a href="{{section.settings.komurl}}">{{section.settings.kombtn}}</a></p>
+          </div>
+          </div>
+        </div>
+         <div class="shopround" >
+              <a href="{{ section.settings.img-link }}">
+                <img src="{{section.settings.shop | img_url:'master'}}" class="shopimg rotate" id="js-logo">
+              </a>
+            </div>
+    </div>
+  
+</div>
+ <style>
+   .backgroundbiore{
+    display: flex;
+    justify-content: flex-start;
+         align-items: center;
+   }
+   .backgroundbiore img{
+         width: 100%;
+   }
+   .biorcustom {
+    position: relative;
+}
+   .biorewash {
+    width: 50%;
+    flex: 0 0 50%;
+         position: absolute;
+}
+   .biorcont {
+    width: 35%;
+    margin: 0 auto;
+}
+   .biorcont h2, .biorcont p{
+         color: #C685FF;
+   }
+   .biorcont .subtn a{
+     color: #fff;
+      background-color: #C685FF;
+   }
+   .biorcustom{
+     position:relative;
+   }
+   .biopar span {
+    display: block;
+}
+
+   
+   @media screen and (max-width: 1330px) {
+.biorcont {
+    width: 70%;
+
+}
+
+   }
+
+    @media screen and (max-width: 768px) {
+.biorcont {
+    width: 95%;
+      margin-right: 0;
+    margin-left: auto;
+}
+
+    }
+      @media screen and (max-width: 540px) {
+.biorewash {
+    width: 100%;
+    flex: 0 0 100%;
+}
+        .subtn {
+    margin: 0px 0px 0px;
+}
+        .subtn a {
+    padding: 11px 21px;
+}
+        .backgroundbiore{
+              align-items: baseline;
+        }
+           .biorcont {
+    width: 98%;}
+      }
+ </style>
+{% schema %}
+  {
+  "name": "biorezone",
+
+  "settings": [
+     {
+   "id": "backome",
+   "type": "image_picker",
+    "label": "Banner Image"
+   },
+{
+  "id" : "komtitle",
+  "type" : "text",
+  "label" : "Heading"
+},
+{
+    "id" : "kompar",
+    "type" : "textarea",
+    "label" : "Discription"
+  },
+  {
+    "id" : "kombtn",
+    "type" : "text",
+    "label" : "btn title"
+  },
+      {
+    "id" : "komurl",
+    "type" : "url",
+    "label" : "btn url"
+  },
+      {
+        "id": "shop",
+        "type": "image_picker",
+         "label": "shop Image"
+        },
+     {
+    "id" : "img-link",
+    "type" : "url",
+    "label" : "Image Link"
+  }
+  ],
+  "blocks":[
+  {
+  "type" : "block",
+  "name" : "block",
+  "settings" : [
+  
+  ]
+  }
+
+  ],
+  "presets" : [
+  {
+    "name" : "biorezone",
+    "category" : "biorezone"
+
+    }
+  ]
+  }
+  {% endschema %}
